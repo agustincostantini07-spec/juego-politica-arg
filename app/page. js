@@ -1,0 +1,125 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
+
+let socket;
+
+export default function Home() {
+  const [roomCode, setRoomCode] = useState('');
+  const [currentRoom, setCurrentRoom] = useState(null);
+  const [playerName, setPlayerName] = useState('');
+  const [party, setParty] = useState('CENTRO');
+  const [isJoined, setIsJoined] = useState(false);
+
+  useEffect(() => {
+    socket = io('https://politica-arg-backend.onrender.com');
+
+    socket.on('room_created', ({ code, room }) => {
+      setRoomCode(code);
+      setCurrentRoom(room);
+    });
+
+    socket.on('room_joined', ({ code, room }) => {
+      setRoomCode(code);
+      setCurrentRoom(room);
+    });
+
+    socket.on('room_updated', (updatedRoom) => {
+      setCurrentRoom(updatedRoom);
+    });
+
+    return () => { if (socket) socket.disconnect(); };
+  }, []);
+
+  const handleCreateRoom = () => socket.emit('create_room');
+  const handleJoinRoom = () => {
+    if (roomCode) socket.emit('join_room', { code: roomCode });
+  };
+
+  const handleCreateCharacter = () => {
+    if (!playerName) return alert('Ingresá tu nombre político');
+    socket.emit('submit_character', {
+      code: roomCode,
+      characterData: { name: playerName, party }
+    });
+    setIsJoined(true);
+  };
+
+  return (
+    <main style={{ minHeight: '100vh', backgroundColor: '#090d16', color: '#fff', padding: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'sans-serif' }}>
+      <div style={{ maxWidth: '500px', width: '100%', backgroundColor: '#0f172a', padding: '2rem', borderRadius: '1rem', border: '1px solid #1e293b', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.5)' }}>
+        <h1 style={{ color: '#fbbf24', textAlign: 'center', marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 'bold' }}>
+          POLÍTICA ARGENTINA: EL JUEGO
+        </h1>
+
+        {!currentRoom ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <button
+              onClick={handleCreateRoom}
+              style={{ padding: '0.75rem', backgroundColor: '#f59e0b', border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer', color: '#000' }}
+            >
+              Crear Nueva Sala
+            </button>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <input
+                type="text"
+                placeholder="Código (4 letras)"
+                value={roomCode}
+                onChange={(e) => setRoomCode(e.target.value.toUpperCase())}
+                style={{ flex: 1, padding: '0.5rem', backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '0.5rem', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }}
+              />
+              <button
+                onClick={handleJoinRoom}
+                style={{ padding: '0.5rem 1rem', backgroundColor: '#334155', border: 'none', borderRadius: '0.5rem', color: '#fff', fontWeight: 'bold', cursor: 'pointer' }}
+              >
+                Unirse
+              </button>
+            </div>
+          </div>
+        ) : !isJoined ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <h2 style={{ color: '#fbbf24', fontSize: '1.1rem' }}>Creá tu Personaje (Sala: {roomCode})</h2>
+            <input
+              type="text"
+              placeholder="Nombre Político"
+              value={playerName}
+              onChange={(e) => setPlayerName(e.target.value)}
+              style={{ padding: '0.5rem', backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '0.5rem', color: '#fff' }}
+            />
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              {['IZQUIERDA', 'CENTRO', 'DERECHA'].map((p) => (
+                <button
+                  key={p}
+                  onClick={() => setParty(p)}
+                  style={{ flex: 1, padding: '0.5rem', border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer', backgroundColor: party === p ? '#f59e0b' : '#1e293b', color: party === p ? '#000' : '#fff' }}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={handleCreateCharacter}
+              style={{ padding: '0.75rem', backgroundColor: '#f59e0b', border: 'none', borderRadius: '0.5rem', fontWeight: 'bold', cursor: 'pointer', color: '#000' }}
+            >
+              Ingresar al Lobby
+            </button>
+          </div>
+        ) : (
+          <div>
+            <p style={{ color: '#94a3b8', marginBottom: '1rem' }}>Sala: <strong style={{ color: '#fff' }}>{roomCode}</strong></p>
+            <h3 style={{ marginBottom: '0.5rem' }}>Jugadores Conectados ({currentRoom.players.length}/20):</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {currentRoom.players.map((p) => (
+                <li key={p.id} style={{ padding: '0.5rem 0', borderBottom: '1px solid #1e293b', display: 'flex', justifyContent: 'space-between' }}>
+                  <span>{p.name}</span>
+                  <span style={{ color: '#fbbf24', fontSize: '0.85rem' }}>{p.party}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
