@@ -1,0 +1,1813 @@
+ARGENTUM 2D — REANUDACIÓN URGENTE DESPUÉS DE CORTE POR CRÉDITOS
+
+RETOMÁ ARGENTUM 2D EXACTAMENTE DESDE EL ESTADO REAL ACTUAL DEL PROYECTO.
+
+IMPORTANTE:
+
+EN LA EJECUCIÓN ANTERIOR TRABAJASTE APROXIMADAMENTE 16 MINUTOS Y LA SESIÓN SE CORTÓ POR FALTA DE CRÉDITOS ANTES DE QUE PUDIERAS DARME UN REPORTE FINAL.
+
+POR LO TANTO:
+
+NO ASUMAS QUE EL PROYECTO ESTÁ VACÍO.
+
+NO ASUMAS TAMPOCO QUE TODO LO DEL PROMPT ANTERIOR ESTÁ IMPLEMENTADO.
+
+PRIMERO INSPECCIONÁ RÁPIDAMENTE QUÉ QUEDÓ REALMENTE HECHO DURANTE ESOS 16 MINUTOS.
+
+DESPUÉS CONTINUÁ DESDE AHÍ.
+
+NO REINICIES EL PROYECTO.
+
+NO REHAGAS TRABAJO QUE YA EXISTE Y FUNCIONA.
+
+NO PASES TODA LA SESIÓN AUDITANDO.
+
+LA AUDITORÍA INICIAL DEBE SER RÁPIDA Y ORIENTADA A PODER SEGUIR CONSTRUYENDO.
+
+==================================================
+OBJETIVO GENERAL
+==================================================
+
+ESTAMOS CONSTRUYENDO:
+
+ARGENTUM 2D.
+
+Es el equivalente conceptual de ARGENTUM 3D trasladado a un mundo 2D físicamente jugable, pero con MUCHO MÁS FOCO EN:
+
+POLÍTICA
+ECONOMÍA
+SOCIEDAD
+ELECCIONES
+PARTIDOS
+CONGRESO
+LEYES
+JUSTICIA
+ROLES
+INSTITUCIONES
+INTERACCIÓN ENTRE JUGADORES.
+
+NO es solamente un simulador político de menús.
+
+NO es solamente un RPG 2D.
+
+ES:
+
+MUNDO 2D FÍSICO
++
+SIMULACIÓN POLÍTICA PROFUNDA.
+
+==================================================
+PRIMERA ACCIÓN — RECUPERAR EL ESTADO REAL
+==================================================
+
+ANTES DE MODIFICAR COSAS IMPORTANTES:
+
+INSPECCIONÁ RÁPIDAMENTE:
+
+- estructura del proyecto;
+- escenas;
+- scripts;
+- prefabs;
+- assets;
+- UI;
+- sistemas;
+- configuración;
+- Git;
+- README si existe;
+- CONTINUAR_AQUI si existe;
+- errores actuales;
+- qué quedó de la ejecución anterior.
+
+Si existe historial Git:
+
+USALO PARA ENTENDER QUÉ SE MODIFICÓ.
+
+Si existen archivos creados recientemente:
+
+INSPECCIONALOS.
+
+Si existe una escena jugable:
+
+ABRILA/EJECUTALA.
+
+Si existe build:
+
+PROBALA.
+
+OBJETIVO DE ESTA INSPECCIÓN:
+
+RESPONDER INTERNAMENTE:
+
+¿QUÉ EXISTE?
+¿QUÉ FUNCIONA?
+¿QUÉ ESTÁ A MEDIAS?
+¿QUÉ FALTA?
+
+Y ENSEGUIDA:
+
+CONTINUAR CONSTRUYENDO.
+
+NO ME MANDES UN INFORME ANTES DE CONTINUAR.
+
+==================================================
+REGLA DE EJECUCIÓN
+==================================================
+
+NO QUIERO:
+
+AUDITORÍA
+→ REPORTE
+→ PARAR.
+
+QUIERO:
+
+INSPECCIONAR
+→ ENTENDER
+→ IMPLEMENTAR
+→ EJECUTAR
+→ JUGAR
+→ DETECTAR PROBLEMAS
+→ CORREGIR
+→ CONTINUAR.
+
+NO me preguntes permiso entre fases.
+
+Mientras tengas capacidad:
+
+SEGUÍ.
+
+==================================================
+REGLA FUNDAMENTAL DEL MUNDO
+==================================================
+
+ARGENTUM 2D ES FÍSICAMENTE JUGABLE.
+
+El jugador controla un personaje 2D.
+
+Debe poder progresivamente:
+
+caminar;
+correr;
+colisionar;
+abrir puertas;
+entrar a edificios;
+recorrer interiores;
+salir;
+interactuar;
+usar objetos;
+usar inventario;
+comprar;
+vender;
+usar armas;
+disparar;
+recibir daño;
+jugar al fútbol;
+usar instituciones;
+participar físicamente del mundo político.
+
+NO quiero:
+
+MAPA
+→ CLICK EN CONGRESO
+→ MENÚ.
+
+QUIERO:
+
+CAMINAR HASTA CONGRESO
+→ ENTRAR
+→ APARECER FÍSICAMENTE EN INTERIOR
+→ CAMINAR POR EL CONGRESO
+→ LLEGAR AL RECINTO
+→ INTERACTUAR.
+
+Las interfaces políticas aparecen DENTRO de ese contexto.
+
+==================================================
+INTERIORES FÍSICOS
+==================================================
+
+Los edificios importantes deben tener interiores 2D reales.
+
+Puede utilizarse una escena independiente por interior.
+
+Flujo:
+
+EXTERIOR
+→ PUERTA
+→ TRANSICIÓN
+→ INTERIOR FÍSICO
+→ PERSONAJE CONTROLABLE.
+
+Salida:
+
+INTERIOR
+→ PUERTA
+→ TRANSICIÓN
+→ EXTERIOR.
+
+Necesitamos eventualmente interiores físicos para:
+
+CONGRESO.
+TRIBUNAL.
+COMISARÍA.
+CÁRCEL.
+HOSPITAL.
+BOMBEROS.
+SUPERMERCADO.
+CASAS.
+NEGOCIOS.
+
+NO sustituir estos interiores por pantallas.
+
+==================================================
+MAPA
+==================================================
+
+Ciudad compacta inspirada en Buenos Aires/CABA.
+
+NO ISLA.
+
+NO MAR.
+
+NO OCÉANO.
+
+Debe incluir:
+
+calles;
+avenidas;
+veredas;
+esquinas;
+plaza;
+barrios;
+casas;
+negocios;
+instituciones;
+cancha.
+
+No necesito un mapa gigantesco.
+
+PEQUEÑO
++
+DENSO
++
+JUGABLE.
+
+==================================================
+EDIFICIOS OBLIGATORIOS
+==================================================
+
+CONGRESO.
+HOSPITAL.
+COMISARÍA.
+TRIBUNAL.
+CÁRCEL.
+BOMBEROS.
+SUPERMERCADO.
+CANCHA F5.
+PLAZA CENTRAL.
+
+20 CASA+NEGOCIO:
+
+BARRIO NORTE:
+N01-N10.
+
+BARRIO SUR:
+S01-S10.
+
+==================================================
+SALA DE ESPERA — FUNDAMENTAL
+==================================================
+
+ARGENTUM 2D está pensado alrededor de PARTIDAS MULTIJUGADOR.
+
+Antes de comenzar cada partida existe:
+
+SALA DE ESPERA / LOBBY.
+
+Durante el lobby:
+
+LOS JUGADORES FORMAN PARTIDOS POLÍTICOS.
+
+CADA PARTIDO TIENE EXACTAMENTE 2 JUGADORES.
+
+NO 1.
+
+NO 3.
+
+EXACTAMENTE 2.
+
+Los dos slots son:
+
+1. CANDIDATO A PRESIDENTE.
+
+2. CANDIDATO A JUEZ.
+
+Ejemplo:
+
+PARTIDO FEDERAL
+
+Presidente:
+Jugador1.
+
+Juez:
+Jugador2.
+
+PARTIDO NACIONAL
+
+Presidente:
+Jugador3.
+
+Juez:
+Jugador4.
+
+PARTIDO POPULAR
+
+Presidente:
+Jugador5.
+
+Juez:
+Jugador6.
+
+==================================================
+CREACIÓN DE PARTIDO
+==================================================
+
+Cada partido debe tener progresivamente:
+
+partyId;
+nombre;
+sigla;
+color;
+plataforma;
+ideología;
+candidato presidencial;
+candidato judicial;
+estado READY.
+
+Lobby debe mostrar:
+
+jugadores;
+partidos;
+slots;
+partidos completos;
+partidos incompletos;
+estado READY.
+
+Un partido sólo está completo cuando tiene:
+
+1 PRESIDENTE
++
+1 JUEZ.
+
+==================================================
+TESTING SIN MULTIPLAYER REAL
+==================================================
+
+NO permitas que networking bloquee todo el desarrollo.
+
+Aunque el diseño final sea multiplayer:
+
+DEBE PODER PROBARSE LOCALMENTE.
+
+Crear cuando sea necesario:
+
+jugadores simulados;
+partidos simulados;
+NPCs políticos;
+bots;
+debug setup.
+
+Así podemos probar:
+
+3 partidos
+→ 6 jugadores conceptuales
+
+sin necesitar seis personas conectadas durante desarrollo.
+
+==================================================
+COMIENZO DE PARTIDA
+==================================================
+
+NO comienza directamente con un Presidente asignado.
+
+Flujo:
+
+LOBBY
+→ PARTIDOS FORMADOS
+→ READY
+→ INICIO
+→ CAMPAÑA ELECTORAL.
+
+==================================================
+CAMPAÑA
+==================================================
+
+Durante campaña:
+
+cada partido intenta ganar apoyo.
+
+Debe existir progresivamente:
+
+plataforma;
+propuestas;
+actos;
+debates;
+campaña;
+encuestas;
+opinión pública;
+eventos.
+
+También quiero que campaña pueda vivirse físicamente.
+
+Ejemplo:
+
+ACTO EN PLAZA CENTRAL.
+
+El candidato puede estar físicamente allí.
+
+==================================================
+ELECCIONES
+==================================================
+
+Después de campaña:
+
+ELECCIÓN.
+
+Cada partido presenta:
+
+CANDIDATO PRESIDENCIAL
++
+CANDIDATO JUDICIAL.
+
+Para la primera implementación:
+
+EL PARTIDO GANADOR COLOCA:
+
+su candidato presidencial
+→ PRESIDENTE.
+
+su candidato judicial
+→ JUEZ.
+
+PERO:
+
+hacer esta regla CONFIGURABLE para poder cambiarla después.
+
+==================================================
+CONGRESO
+==================================================
+
+Como cada partido sólo tiene 2 jugadores humanos:
+
+NO necesitamos humanos para cada banca.
+
+El Congreso utiliza:
+
+BANCAS SIMULADAS.
+
+Las elecciones distribuyen representación.
+
+Ejemplo conceptual:
+
+Partido A:
+40 bancas.
+
+Partido B:
+35 bancas.
+
+Partido C:
+25 bancas.
+
+Total:
+100.
+
+Configurarlo mediante datos.
+
+==================================================
+GANAR PRESIDENCIA != CONTROLAR CONGRESO
+==================================================
+
+ESTO ES FUNDAMENTAL.
+
+Un partido puede ganar Presidencia pero no tener mayoría legislativa.
+
+Ejemplo:
+
+PRESIDENTE:
+Partido A.
+
+CONGRESO:
+
+Partido A: 40.
+Partido B: 35.
+Partido C: 25.
+
+Para aprobar algo:
+
+Partido A necesita negociar.
+
+Esto debe generar:
+
+alianzas;
+negociaciones;
+modificaciones;
+acuerdos;
+oposición.
+
+==================================================
+PRESIDENTE
+==================================================
+
+El jugador Presidente sigue siendo un personaje físico.
+
+Puede caminar.
+
+Puede entrar a edificios.
+
+Puede visitar instituciones.
+
+Puede participar en actividades.
+
+Además tiene facultades políticas.
+
+Puede progresivamente:
+
+impulsar proyectos;
+administrar políticas;
+promulgar;
+vetar;
+tomar decisiones ejecutivas permitidas.
+
+NO controla mágicamente todas las variables.
+
+==================================================
+JUEZ
+==================================================
+
+El jugador Juez también existe físicamente.
+
+Puede:
+
+caminar;
+entrar al Tribunal;
+entrar a sala;
+ocupar estrado;
+revisar casos;
+tomar decisiones judiciales.
+
+Aunque pertenezca electoralmente al partido ganador:
+
+EL PRESIDENTE NO CONTROLA AL JUEZ.
+
+Son dos jugadores distintos.
+
+==================================================
+CONGRESO FÍSICO
+==================================================
+
+El Congreso debe existir como edificio físico 2D.
+
+Interior:
+
+entrada;
+hall;
+pasillos;
+recinto;
+escritorios;
+asientos;
+sector de autoridad;
+pantallas;
+micrófonos si se representan;
+puertas.
+
+Jugador entra físicamente.
+
+==================================================
+PROYECTOS DE LEY
+==================================================
+
+Crear:
+
+BillSystem / LawSystem.
+
+Flujo:
+
+CREAR PROYECTO
+→ PRESENTAR
+→ DISCUSIÓN
+→ NEGOCIACIÓN
+→ VOTACIÓN
+→ APROBADO/RECHAZADO.
+
+Opciones:
+
+A FAVOR.
+EN CONTRA.
+ABSTENCIÓN.
+
+No doble voto.
+
+==================================================
+LAS LEYES CAMBIAN EL JUEGO
+==================================================
+
+ESTO ES CRÍTICO.
+
+Una ley NO es solamente texto.
+
+Ejemplo:
+
+PROYECTO:
+subir impuesto al consumo.
+
+Congreso aprueba.
+
+LawSystem:
+crea ley.
+
+TaxSystem:
+actualiza tasa.
+
+EconomicSystem:
+recalcula progresivamente consecuencias.
+
+Precios/recaudación/actividad/opinión pueden reaccionar.
+
+CADENA:
+
+POLÍTICA
+→ LEY
+→ MUNDO.
+
+==================================================
+ECONOMÍA
+==================================================
+
+Moneda:
+
+ARGENTUM.
+
+Capital inicial del jugador:
+
+100.000 ARGENTUMS.
+
+EconomicSystem debe manejar progresivamente:
+
+actividad;
+inflación;
+empleo;
+salarios;
+precios;
+recaudación;
+gasto;
+balance fiscal;
+deuda;
+consumo;
+inversión.
+
+NO hacer una calculadora académica imposible de mantener.
+
+Sí hacer:
+
+VARIABLES CONECTADAS
++
+CONSECUENCIAS ENTENDIBLES.
+
+==================================================
+PRESUPUESTO
+==================================================
+
+BudgetSystem.
+
+Ingresos.
+
+Gastos.
+
+Balance.
+
+Áreas:
+
+salud;
+seguridad;
+justicia;
+bomberos;
+administración;
+infraestructura.
+
+Las decisiones políticas pueden modificar presupuesto.
+
+==================================================
+OPINIÓN PÚBLICA
+==================================================
+
+PublicOpinionSystem.
+
+Sectores sociales.
+
+Reaccionan a:
+
+economía;
+inflación;
+empleo;
+seguridad;
+servicios;
+leyes;
+gobierno;
+eventos.
+
+NO usar simplemente:
+
+popularidad += Random(-10,10).
+
+Debe haber causas.
+
+==================================================
+ENCUESTAS
+==================================================
+
+Encuestas muestran:
+
+intención de voto;
+tendencias;
+margen de error.
+
+NO revelar exactamente resultado futuro.
+
+==================================================
+ELECCIONES FUTURAS
+==================================================
+
+El gobierno NO dura para siempre.
+
+TimeSystem.
+
+Calendario.
+
+Mandatos configurables.
+
+Cuando se acerca elección:
+
+CAMPAÑA
+→ ENCUESTAS
+→ ELECCIÓN
+→ RESULTADO
+→ NUEVO GOBIERNO O REELECCIÓN.
+
+==================================================
+CONSTITUCIÓN
+==================================================
+
+Crear arquitectura para Constitución.
+
+Variables configurables:
+
+termLength;
+maxTerms;
+electionRules;
+legislativeSeats;
+quorum;
+majorities.
+
+NO hardcodear una única interpretación permanente.
+
+==================================================
+SUPERMERCADO FÍSICO
+==================================================
+
+Jugador:
+
+camina hasta supermercado
+→ entra
+→ recorre interior
+→ ve productos
+→ compra
+→ productos van al inventario
+→ dinero se transfiere
+→ impuestos pueden aplicarse.
+
+Flujo económico real:
+
+STOCK
+→ PRODUCTO
+→ COMPRA
+→ DINERO
+→ IMPUESTO
+→ ESTADO.
+
+==================================================
+INVENTARIO
+==================================================
+
+Inventario real.
+
+Hotbar:
+
+1
+2
+3
+4
+5.
+
+I:
+inventario.
+
+P:
+teléfono.
+
+Productos.
+
+Objetos.
+
+Armas.
+
+Stacks.
+
+Una sola fuente de verdad.
+
+==================================================
+ARMAS
+==================================================
+
+Los jugadores pueden tener armas.
+
+Implementar progresivamente:
+
+arma de fuego;
+arma blanca.
+
+Arma de fuego:
+
+equipar;
+apuntar;
+disparar;
+munición;
+impacto;
+daño.
+
+Arma blanca:
+
+equipar;
+ataque;
+rango;
+daño.
+
+NO gore.
+
+==================================================
+COMBATE + LEY
+==================================================
+
+El combate debe conectarse con la simulación.
+
+Ejemplo:
+
+Jugador A dispara a Jugador B.
+
+HealthSystem:
+daño.
+
+CrimeSystem:
+registra hecho.
+
+PoliceSystem:
+puede intervenir.
+
+Jugador A:
+puede ser detenido.
+
+JusticeSystem:
+genera caso.
+
+Tribunal:
+Juez interviene.
+
+Resultado:
+
+ABSOLUCIÓN
+O
+CONDENA.
+
+Si condenado:
+
+CÁRCEL.
+
+==================================================
+COMISARÍA FÍSICA
+==================================================
+
+Interior real.
+
+PC policial.
+
+Lista de detenidos/presos actuales.
+
+Si ninguno:
+
+NO HAY DETENIDOS ACTUALMENTE.
+
+==================================================
+CÁRCEL FÍSICA
+==================================================
+
+Interior real.
+
+Pasillos.
+
+Celdas.
+
+Cada celda:
+
+cellId;
+doorState;
+locked;
+occupantPlayerId.
+
+Estados:
+
+OPEN.
+CLOSED.
+LOCKED.
+
+==================================================
+TRIBUNAL FÍSICO
+==================================================
+
+Interior real.
+
+Sala.
+
+Estrado.
+
+Juez.
+
+Acusado.
+
+Testigo si corresponde.
+
+Público.
+
+El Juez físicamente entra y ocupa su función.
+
+==================================================
+CANCHA F5 — JUGABLE DE VERDAD
+==================================================
+
+NO decoración.
+
+Jugador entra físicamente a la cancha.
+
+Debe existir:
+
+césped;
+líneas;
+dos arcos;
+redes;
+límites;
+pelota física.
+
+Crear FootballSystem.
+
+Pelota:
+
+posición;
+velocidad;
+impulso;
+fricción;
+rebote;
+gol.
+
+Jugador:
+
+correr;
+controlar;
+pasar;
+patear;
+rematar.
+
+Después:
+
+arquero;
+atajada;
+intercepción.
+
+==================================================
+PARTIDO DE FÚTBOL
+==================================================
+
+Team A.
+Team B.
+
+Marcador.
+
+Tiempo.
+
+Goles.
+
+Reinicio.
+
+Fin.
+
+Permitir práctica/bots durante desarrollo.
+
+==================================================
+HOSPITAL
+==================================================
+
+Interior físico.
+
+Recepción.
+
+Pasillos.
+
+Habitaciones.
+
+Camas.
+
+HealthSystem.
+
+Rol médico/enfermero.
+
+==================================================
+BOMBEROS
+==================================================
+
+Interior físico.
+
+Garage.
+
+Equipamiento.
+
+FireSystem básico.
+
+Extintores.
+
+Incendios/eventos.
+
+==================================================
+CASAS + NEGOCIOS
+==================================================
+
+20 unidades.
+
+N01-N10.
+
+S01-S10.
+
+Casa físicamente explorable.
+
+Negocio físicamente explorable.
+
+Propietario.
+
+Stock.
+
+Productos.
+
+Dinero.
+
+==================================================
+PROPIEDADES
+==================================================
+
+PropertySystem.
+
+propertyId;
+type;
+ownerId;
+value;
+forSale;
+price.
+
+Comprar.
+
+Vender.
+
+==================================================
+TELÉFONO
+==================================================
+
+P abre teléfono.
+
+Apps:
+
+CONTACTOS.
+MENSAJES.
+MAPA.
+CONSTITUCIÓN.
+LEYES.
+NOTICIAS.
+ESTADÍSTICAS.
+
+==================================================
+TIEMPO
+==================================================
+
+PAUSA.
+1X.
+2X.
+4X.
+
+Días.
+Meses.
+Años.
+
+Campañas.
+Elecciones.
+Mandatos.
+Economía.
+Eventos.
+
+Todo depende del tiempo.
+
+==================================================
+SAVE / LOAD
+==================================================
+
+OBLIGATORIO.
+
+Guardar progresivamente:
+
+jugadores;
+partidos;
+Presidente;
+Juez;
+Congreso;
+bancas;
+leyes;
+economía;
+opinión;
+elecciones;
+tiempo;
+dinero;
+inventario;
+propiedades;
+negocios;
+detenidos;
+casos;
+mundo.
+
+==================================================
+ARQUITECTURA MULTIPLAYER-READY
+==================================================
+
+El juego final es MULTIJUGADOR.
+
+No implementar ahora un sistema gigantesco de networking si todavía no existe un vertical slice estable.
+
+PERO separar correctamente:
+
+GameState.
+WorldState.
+PlayerState.
+PoliticalState.
+EconomicState.
+ElectionState.
+JusticeState.
+
+NO meter toda la lógica crítica directamente en botones/UI.
+
+==================================================
+PRIORIDAD REAL DE ESTA EJECUCIÓN
+==================================================
+
+NO INTENTES HACER 100 SISTEMAS SUPERFICIALES.
+
+PRIMERO conseguí una CADENA COMPLETA.
+
+QUIERO LLEGAR LO ANTES POSIBLE A:
+
+LOBBY
+→ PARTIDOS
+→ PRESIDENTE + JUEZ
+→ CAMPAÑA
+→ ELECCIÓN
+→ RESULTADO
+→ BANCAS
+→ PRESIDENTE
+→ JUEZ
+→ CONGRESO
+→ PROYECTO
+→ VOTACIÓN
+→ LEY
+→ CONSECUENCIA ECONÓMICA
+→ OPINIÓN PÚBLICA.
+
+Y paralelamente tener suficiente mundo físico para demostrar:
+
+PERSONAJE
+→ CALLE
+→ PUERTA
+→ INTERIOR
+→ INTERACCIÓN.
+
+==================================================
+VERTICAL SLICE OBJETIVO
+==================================================
+
+QUIERO PODER HACER, IDEALMENTE:
+
+ABRIR JUEGO.
+
+LOBBY.
+
+Crear Partido A:
+Presidente A + Juez A.
+
+Crear Partido B:
+Presidente B + Juez B.
+
+Crear Partido C:
+Presidente C + Juez C.
+
+Usar jugadores simulados cuando haga falta.
+
+READY.
+
+START.
+
+Entrar al mundo.
+
+Mover personaje.
+
+Caminar por ciudad.
+
+Entrar físicamente a un edificio.
+
+Salir.
+
+Campaña.
+
+Encuestas.
+
+Avanzar tiempo.
+
+Elección.
+
+Resultado.
+
+Distribución de bancas.
+
+Presidente ganador asume.
+
+Juez ganador asume.
+
+Presidente presenta proyecto tributario.
+
+Congreso vota.
+
+Ley aprobada/rechazada.
+
+Si aprobada:
+TaxSystem cambia.
+
+EconomicSystem reacciona.
+
+PublicOpinionSystem reacciona.
+
+Después:
+
+entrar físicamente al supermercado.
+
+Comprar producto.
+
+Entrar físicamente al Congreso.
+
+Recorrerlo.
+
+Entrar a cancha.
+
+Patear pelota.
+
+Registrar gol.
+
+Equipar arma de testing.
+
+Disparar.
+
+Registrar daño.
+
+Registrar posible crimen.
+
+Guardar.
+
+Cargar.
+
+NO pasa nada si no entra TODO en esta ejecución.
+
+PERO:
+
+CONSTRUIR EN ESA DIRECCIÓN.
+
+==================================================
+ORDEN DE PRIORIDADES
+==================================================
+
+Después de inspeccionar lo ya construido:
+
+P0 — HACER EJECUTABLE/JUGABLE LO EXISTENTE.
+
+P1 — FOUNDATION.
+
+P2 — PLAYER + MOVIMIENTO.
+
+P3 — MAPA EXTERIOR.
+
+P4 — INTERIOR FÍSICO + TRANSICIÓN.
+
+P5 — INTERACTION SYSTEM.
+
+P6 — LOBBY.
+
+P7 — PARTIDOS DE 2 PERSONAS.
+
+P8 — CAMPAÑA.
+
+P9 — ELECCIONES.
+
+P10 — PRESIDENTE/JUEZ.
+
+P11 — CONGRESO/BANCAS.
+
+P12 — PROYECTOS/LEYES.
+
+P13 — ECONOMÍA.
+
+P14 — OPINIÓN PÚBLICA.
+
+P15 — SAVE/LOAD.
+
+P16 — INVENTARIO/NEGOCIOS.
+
+P17 — ARMAS/COMBATE.
+
+P18 — CRIMEN/POLICÍA/JUSTICIA/CÁRCEL.
+
+P19 — FÚTBOL.
+
+P20 — RESTO DE INSTITUCIONES.
+
+P21 — PULIDO.
+
+Si una prioridad YA EXISTE:
+
+NO REHACERLA.
+
+PROBARLA.
+
+CORREGIRLA.
+
+PASAR A LA SIGUIENTE.
+
+==================================================
+MUY IMPORTANTE — NO PERDER OTRA VEZ EL REPORTE
+==================================================
+
+LA EJECUCIÓN ANTERIOR TERMINÓ ABRUPTAMENTE SIN REPORTE.
+
+NO QUIERO QUE VUELVA A PASAR.
+
+NO ESPERES AL ÚLTIMO SEGUNDO PARA DOCUMENTAR.
+
+CREÁ O ACTUALIZÁ DESDE TEMPRANO:
+
+CONTINUAR_AQUI.md
+
+A MEDIDA QUE ALCANCES HITOS IMPORTANTES.
+
+NO hace falta detener el desarrollo para escribirme reportes.
+
+Actualizá el archivo internamente y seguí.
+
+==================================================
+GITHUB — CHECKPOINTS
+==================================================
+
+Si GitHub está disponible:
+
+USALO COMO RED DE SEGURIDAD.
+
+Commit después de hitos grandes.
+
+Ejemplos:
+
+foundation playable
+
+lobby political parties
+
+election vertical slice
+
+congress law simulation
+
+physical interiors
+
+No commit por cada archivo.
+
+==================================================
+CONTINUAR_AQUI.md
+==================================================
+
+DEBE QUEDAR ACTUALIZADO AUNQUE LA SESIÓN SE CORTE.
+
+Incluir:
+
+# ARGENTUM 2D — ESTADO
+
+## TECNOLOGÍA
+Motor/framework y versión.
+
+## CÓMO EJECUTAR
+Pasos exactos.
+
+## ESCENA/PUNTO DE ENTRADA
+Nombre exacto.
+
+## QUÉ ES VISIBLE
+Descripción exacta.
+
+## QUÉ ES JUGABLE
+Descripción exacta.
+
+## SISTEMAS TERMINADOS
+Lista.
+
+## SISTEMAS PARCIALES
+Para cada uno:
+
+qué funciona;
+qué falta;
+archivos;
+bugs;
+siguiente acción.
+
+## LOBBY
+Estado.
+
+## PARTIDOS
+Estado.
+
+## CAMPAÑA
+Estado.
+
+## ELECCIONES
+Estado.
+
+## PRESIDENTE/JUEZ
+Estado.
+
+## CONGRESO
+Estado.
+
+## LEYES
+Estado.
+
+## ECONOMÍA
+Estado.
+
+## OPINIÓN PÚBLICA
+Estado.
+
+## MUNDO FÍSICO
+Estado.
+
+## INTERIORES
+Estado.
+
+## INVENTARIO
+Estado.
+
+## ARMAS
+Estado.
+
+## CRIMEN/JUSTICIA
+Estado.
+
+## FÚTBOL
+Estado.
+
+## SAVE/LOAD
+Estado.
+
+## ERRORES
+Lista concreta.
+
+## ARCHIVOS IMPORTANTES
+Lista.
+
+## ÚLTIMO COMMIT
+Hash/mensaje si corresponde.
+
+## PRÓXIMA PRIORIDAD
+Una sola prioridad concreta.
+
+## PRIMERA ACCIÓN DE LA PRÓXIMA SESIÓN
+Acción exacta.
+
+==================================================
+REGLA PARA EVITAR DESPERDICIAR CRÉDITOS
+==================================================
+
+NO pasar 20 minutos:
+
+planeando;
+explicando;
+buscando;
+reorganizando;
+haciendo documentación;
+investigando arquitectura perfecta.
+
+DECIDÍ RÁPIDO.
+
+IMPLEMENTÁ.
+
+NO me informes cada 5 minutos.
+
+Pero tampoco dejes toda la documentación para cuando quede 0%.
+
+==================================================
+DEFINICIÓN DE "TERMINADO"
+==================================================
+
+NO:
+
+"LobbyManager.cs existe."
+
+SÍ:
+
+puedo abrir lobby
+→ crear partido
+→ asignar Presidente
+→ asignar Juez
+→ READY.
+
+NO:
+
+"ElectionSystem.cs existe."
+
+SÍ:
+
+campaña termina
+→ votación ocurre
+→ votos se cuentan
+→ ganador se determina
+→ Presidente/Juez cambian
+→ Congreso recibe bancas.
+
+NO:
+
+"Interior creado."
+
+SÍ:
+
+personaje toca puerta
+→ entra
+→ aparece físicamente dentro
+→ puede caminar
+→ puede salir.
+
+NO:
+
+"FootballSystem existe."
+
+SÍ:
+
+entro a cancha
+→ pateo pelota
+→ entra al arco
+→ marcador aumenta.
+
+NO:
+
+"WeaponSystem existe."
+
+SÍ:
+
+equipo arma
+→ disparo
+→ impacto
+→ Health cambia
+→ CrimeSystem puede registrar evento.
+
+==================================================
+NO HACER MOCKUPS COMO PRODUCTO FINAL
+==================================================
+
+Los mockups pueden servir temporalmente.
+
+PERO:
+
+BOTÓN BONITO SIN SISTEMA
+NO ES FEATURE.
+
+PANTALLA DE ELECCIONES SIN ELECCIÓN
+NO ES ELECCIÓN.
+
+CONGRESO VISUAL SIN VOTACIÓN
+NO ES CONGRESO FUNCIONAL.
+
+CANCHA SIN PELOTA
+NO ES FÚTBOL.
+
+ARMA SIN DAÑO
+NO ES COMBATE.
+
+==================================================
+POLÍTICA SIGUE SIENDO PRIORIDAD
+==================================================
+
+Aunque agregamos mundo físico, armas y fútbol:
+
+NO PERDER EL FOCO.
+
+EL CORAZÓN ES:
+
+PARTIDOS
+→ CAMPAÑA
+→ ELECCIONES
+→ PRESIDENTE
+→ JUEZ
+→ CONGRESO
+→ NEGOCIACIÓN
+→ LEYES
+→ ECONOMÍA
+→ OPINIÓN PÚBLICA
+→ NUEVA ELECCIÓN.
+
+El mundo físico hace que TODO ESO SE VIVA COMO VIDEOJUEGO.
+
+==================================================
+MODO BESTIA
+==================================================
+
+QUIERO UNA EJECUCIÓN LARGA Y PRODUCTIVA.
+
+NO:
+
+hacer tres archivos
+→ dar reporte
+→ terminar.
+
+SÍ:
+
+INSPECCIONAR ESTADO
+→ IMPLEMENTAR
+→ EJECUTAR
+→ JUGAR
+→ CORREGIR
+→ SIGUIENTE SISTEMA
+→ EJECUTAR
+→ JUGAR
+→ CORREGIR
+→ SEGUIR.
+
+SI ALGO FUNCIONA:
+
+NO LO TOQUES INNECESARIAMENTE.
+
+SI ALGO ESTÁ PARCIAL:
+
+TERMINALO.
+
+SI ALGO ESTÁ ROTO:
+
+ARREGLALO.
+
+SI UNA TAREA SE BLOQUEA:
+
+DOCUMENTÁ BLOQUEO
+→ PASÁ A OTRA PRIORIDAD ÚTIL.
+
+NO quemes toda la sesión intentando 30 veces exactamente lo mismo.
+
+==================================================
+CUANDO EMPIECE A QUEDAR POCO USO
+==================================================
+
+NO iniciar una feature gigantesca.
+
+Terminar modificación actual.
+
+Ejecutar.
+
+Probar.
+
+Guardar.
+
+Revisar errores.
+
+Actualizar CONTINUAR_AQUI.md.
+
+Commit GitHub si corresponde.
+
+DEJAR EL PROYECTO EN ESTADO RECUPERABLE.
+
+==================================================
+ORDEN FINAL
+==================================================
+
+AHORA MISMO:
+
+1. INSPECCIONÁ QUÉ HICISTE EN LOS 16 MINUTOS ANTERIORES.
+
+2. NO ME LO REPORTES TODAVÍA.
+
+3. EJECUTÁ EL PROYECTO.
+
+4. IDENTIFICÁ EL ÚLTIMO PUNTO REALMENTE FUNCIONAL.
+
+5. CONTINUÁ DESDE AHÍ.
+
+6. PRIORIZÁ EL VERTICAL SLICE:
+
+LOBBY
+→ PARTIDOS DE 2
+→ PRESIDENTE/JUEZ
+→ CAMPAÑA
+→ ELECCIÓN
+→ BANCAS
+→ CONGRESO
+→ LEY
+→ CONSECUENCIA.
+
+7. MANTENÉ EL MUNDO FÍSICO:
+
+PERSONAJE
+→ MAPA
+→ PUERTAS
+→ INTERIORES.
+
+8. DESPUÉS EXTENDÉ:
+
+ECONOMÍA
+→ INVENTARIO
+→ COMERCIO
+→ ARMAS
+→ CRIMEN
+→ JUSTICIA
+→ CÁRCEL
+→ FÚTBOL.
+
+9. PROBÁ TODO LO QUE IMPLEMENTES.
+
+10. ACTUALIZÁ CONTINUAR_AQUI.md DURANTE EL PROCESO PARA QUE UN CORTE DE CRÉDITOS NO VUELVA A DEJARNOS A CIEGAS.
+
+NO EMPIECES DE CERO.
+
+NO ME PIDAS CONFIRMACIÓN.
+
+NO RESPONDAS CON UN PLAN LARGO.
+
+INSPECCIONÁ RÁPIDO Y EMPEZÁ A TRABAJAR.
+
+ARGENTUM 2D DEBE SER:
+
+UN MUNDO 2D FÍSICAMENTE JUGABLE
++
+INTERIORES REALES
++
+PARTIDOS DE EXACTAMENTE 2 PERSONAS
++
+PRESIDENTE + JUEZ
++
+CAMPAÑAS
++
+ELECCIONES
++
+CONGRESO
++
+LEYES
++
+ECONOMÍA
++
+SOCIEDAD
++
+ARMAS
++
+CRIMEN
++
+JUSTICIA
++
+CÁRCEL
++
+FÚTBOL REALMENTE JUGABLE.
+
+PERO LA PRIORIDAD CENTRAL SIGUE SIENDO:
+
+POLÍTICA.
+
+RECUPERÁ LO QUE QUEDÓ.
+
+CONTINUÁ.
+
+IMPLEMENTÁ.
+
+EJECUTÁ.
+
+JUGÁ.
+
+CORREGÍ.
+
+DOCUMENTÁ PROGRESIVAMENTE.
+
+SEGUÍ HASTA QUE REALMENTE QUEDE POCO USO.
+
+EMPEZÁ AHORA.

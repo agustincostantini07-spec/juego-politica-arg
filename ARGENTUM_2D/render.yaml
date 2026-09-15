@@ -1,0 +1,24 @@
+# Optional portability configuration. Render was declined; no deployment was made.
+services:
+  - type: web
+    name: argentum-2d
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev --ignore-scripts && npm run build
+    startCommand: node server/index.cjs
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DAY_SECONDS
+        value: "60"
+      - key: VOICE_PROXIMITY_RANGE
+        value: "10"
+      - key: WORLD_UNITS_PER_METER
+        value: "24"
+      - key: ALLOW_TEST_BOTS
+        value: "true"
+      - key: MAX_ROOMS
+        value: "10"
+# Free service memory/files are ephemeral; add a persistent disk on a paid service
+# and STATE_DIR to preserve games over restarts. TURN configured separately.

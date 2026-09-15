@@ -1,0 +1,2070 @@
+ARGENTUM 2D — AMPLIACIÓN PRIORITARIA: SISTEMA POLÍTICO COMPLETO + MEDIDAS DE GOBIERNO
+
+ESTA ES UNA AMPLIACIÓN PRIORITARIA DEL PROMPT ANTERIOR.
+
+NO QUIERO QUE LA POLÍTICA DE ARGENTUM 2D SE LIMITE A:
+
+LOBBY
+→ CAMPAÑA
+→ ELECCIÓN
+→ PRESIDENTE
+→ FIN.
+
+LA ELECCIÓN ES SOLAMENTE EL COMIENZO.
+
+QUIERO QUE GOBERNAR, SER OPOSICIÓN, NEGOCIAR, LEGISLAR Y TOMAR MEDIDAS SEA EL NÚCLEO PRINCIPAL DE ARGENTUM 2D.
+
+EMPEZÁ A IMPLEMENTAR ESTA PARTE YA, EN PARALELO CON LA BASE MULTIPLAYER/ONLINE SEGÚN EL ORDEN TÉCNICAMENTE NECESARIO.
+
+TODO EL ESTADO POLÍTICO IMPORTANTE DEBE SER COMPARTIDO Y AUTORITATIVO EN LA PARTIDA ONLINE.
+
+==================================================
+1. LOOP POLÍTICO PRINCIPAL
+==================================================
+
+EL LOOP COMPLETO DE ARGENTUM ES:
+
+LOBBY
+→ FORMACIÓN DE PARTIDOS
+→ CAMPAÑA
+→ PROPUESTAS
+→ DEBATES
+→ ENCUESTAS
+→ ELECCIÓN
+→ RESULTADO
+→ DISTRIBUCIÓN DE BANCAS
+→ ASUNCIÓN
+→ GOBIERNO
+→ OPOSICIÓN
+→ MEDIDAS POLÍTICAS
+→ PROYECTOS DE LEY
+→ NEGOCIACIONES
+→ CONGRESO
+→ VOTACIONES
+→ LEYES
+→ CONSECUENCIAS
+→ OPINIÓN PÚBLICA
+→ CONFLICTOS
+→ NUEVA CAMPAÑA
+→ NUEVA ELECCIÓN.
+
+Y SE REPITE.
+
+No quiero que una partida termine cuando alguien gana la elección.
+
+AHÍ EMPIEZA LA PARTE MÁS IMPORTANTE.
+
+==================================================
+2. PARTIDOS POLÍTICOS
+==================================================
+
+MANTENER REGLA:
+
+CADA PARTIDO POLÍTICO TIENE EXACTAMENTE 2 JUGADORES.
+
+JUGADOR 1:
+CANDIDATO A PRESIDENTE.
+
+JUGADOR 2:
+CANDIDATO A JUEZ.
+
+Durante lobby:
+
+se forman los partidos.
+
+Cada partido debe tener:
+
+partyId;
+nombre;
+sigla;
+color;
+plataforma;
+ideología;
+candidato presidencial;
+candidato judicial;
+popularidad;
+intención de voto;
+bancas;
+estado;
+historial electoral.
+
+==================================================
+3. PLATAFORMA POLÍTICA
+==================================================
+
+Antes de la elección cada partido debe poder definir su plataforma.
+
+NO quiero solamente:
+
+IZQUIERDA / DERECHA.
+
+Usar varias dimensiones.
+
+Por ejemplo:
+
+ECONOMÍA.
+
+IMPUESTOS.
+
+GASTO PÚBLICO.
+
+SEGURIDAD.
+
+JUSTICIA.
+
+SALUD.
+
+EMPLEO.
+
+REGULACIÓN.
+
+LIBERTADES.
+
+POLÍTICA SOCIAL.
+
+INSTITUCIONALIDAD.
+
+Cada partido puede posicionarse.
+
+Esto después debe afectar:
+
+votantes;
+alianzas;
+coherencia política;
+campaña;
+negociaciones;
+apoyo/rechazo de medidas.
+
+==================================================
+4. PROMESAS ELECTORALES
+==================================================
+
+Durante campaña:
+
+los candidatos pueden realizar PROMESAS.
+
+Ejemplo:
+
+BAJAR IMPUESTOS.
+
+AUMENTAR PRESUPUESTO DE SALUD.
+
+AUMENTAR PRESUPUESTO POLICIAL.
+
+REDUCIR DÉFICIT.
+
+AUMENTAR SALARIOS PÚBLICOS.
+
+REFORMAR JUSTICIA.
+
+CAMBIAR REGULACIÓN DE ARMAS.
+
+Las promesas quedan registradas.
+
+Después de asumir:
+
+el juego compara:
+
+PROMETIDO
+vs
+REALIZADO.
+
+Cumplir promesas puede afectar confianza.
+
+Incumplirlas también.
+
+Pero considerar contexto:
+
+una promesa puede fracasar porque Congreso rechazó el proyecto.
+
+NO tratar automáticamente eso igual que decidir abandonarla.
+
+==================================================
+5. MEDIDAS POLÍTICAS — SISTEMA CENTRAL
+==================================================
+
+CREAR UN:
+
+POLICY SYSTEM / GOVERNMENT MEASURES SYSTEM.
+
+Quiero que el Presidente pueda tomar MEDIDAS DE GOBIERNO.
+
+Las medidas NO deben ser simplemente:
+
+BOTÓN
+→ +10 POPULARIDAD.
+
+Cada medida debe modificar variables reales.
+
+==================================================
+6. TIPOS DE MEDIDAS
+==================================================
+
+Separar conceptualmente:
+
+A. MEDIDAS EJECUTIVAS.
+
+B. PROYECTOS DE LEY.
+
+C. PRESUPUESTO.
+
+D. POLÍTICA ECONÓMICA.
+
+E. MEDIDAS ADMINISTRATIVAS.
+
+F. RESPUESTAS A CRISIS/EVENTOS.
+
+G. DECISIONES INSTITUCIONALES.
+
+No todas necesitan el mismo procedimiento.
+
+==================================================
+7. PODER PRESIDENCIAL
+==================================================
+
+El Presidente puede tomar determinadas decisiones directamente cuando las reglas constitucionales lo permitan.
+
+Pero:
+
+NO PUEDE MODIFICAR CUALQUIER COSA DEL JUEGO CON UN BOTÓN.
+
+Ejemplo:
+
+si una modificación requiere ley:
+
+DEBE PASAR POR CONGRESO.
+
+Si requiere presupuesto:
+
+DEBE EXISTIR DINERO.
+
+Si contradice Constitución:
+
+PUEDE GENERAR CONFLICTO JUDICIAL.
+
+==================================================
+8. MEDIDAS ECONÓMICAS
+==================================================
+
+Implementar progresivamente medidas como:
+
+CAMBIAR IMPUESTOS.
+
+CAMBIAR GASTO PÚBLICO.
+
+CAMBIAR PRESUPUESTOS POR ÁREA.
+
+MODIFICAR SALARIOS PÚBLICOS.
+
+SUBSIDIOS.
+
+PROGRAMAS SOCIALES.
+
+INCENTIVOS A INVERSIÓN.
+
+REGULACIONES ECONÓMICAS.
+
+OBRA/INFRAESTRUCTURA.
+
+POLÍTICA MONETARIA cuando corresponda al sistema institucional.
+
+DEUDA/FINANCIAMIENTO.
+
+NO tienen que estar todas terminadas inmediatamente.
+
+Pero crear arquitectura extensible.
+
+==================================================
+9. IMPUESTOS
+==================================================
+
+TaxSystem.
+
+Tipos iniciales simples pero reales.
+
+Ejemplos:
+
+IMPUESTO AL CONSUMO.
+
+IMPUESTO A INGRESOS.
+
+IMPUESTO A EMPRESAS/NEGOCIOS.
+
+IMPUESTO A PROPIEDAD.
+
+Las tasas deben ser configurables.
+
+Ejemplo:
+
+consumptionTaxRate.
+
+El gobierno NO cambia necesariamente una tasa directamente.
+
+Puede requerir:
+
+PROYECTO
+→ CONGRESO
+→ APROBACIÓN
+→ NUEVA LEY
+→ TAX SYSTEM.
+
+==================================================
+10. CADENA REAL DE UNA MEDIDA
+==================================================
+
+EJEMPLO:
+
+PRESIDENTE QUIERE SUBIR IMPUESTO AL CONSUMO.
+
+→ crea proyecto.
+
+→ define tasa actual y propuesta.
+
+→ Congreso recibe proyecto.
+
+→ partidos evalúan.
+
+→ comienza negociación.
+
+→ se vota.
+
+SI PIERDE:
+
+NO CAMBIA EL IMPUESTO.
+
+SI GANA:
+
+LawSystem registra ley.
+
+TaxSystem cambia tasa.
+
+Compras futuras usan nueva tasa.
+
+StoreSystem recauda nuevo impuesto.
+
+BudgetSystem recibe nueva recaudación.
+
+EconomicSystem empieza a reaccionar.
+
+PublicOpinionSystem empieza a reaccionar.
+
+NewsSystem publica el acontecimiento.
+
+TODO ESO DEBE SER UNA CADENA REAL.
+
+==================================================
+11. PRESUPUESTO NACIONAL
+==================================================
+
+CREAR BUDGET SYSTEM.
+
+Mostrar claramente:
+
+INGRESOS.
+
+GASTOS.
+
+BALANCE.
+
+DEUDA si existe.
+
+Reservas/tesorería según modelo elegido.
+
+Áreas de gasto:
+
+SALUD.
+
+SEGURIDAD.
+
+JUSTICIA.
+
+BOMBEROS.
+
+ADMINISTRACIÓN.
+
+INFRAESTRUCTURA.
+
+PROGRAMAS SOCIALES.
+
+OTROS CONFIGURABLES.
+
+==================================================
+12. PRESUPUESTO AFECTA AL MUNDO
+==================================================
+
+NO quiero presupuesto decorativo.
+
+Ejemplo:
+
+más presupuesto Hospital:
+
+puede mejorar progresivamente:
+
+capacidad;
+calidad;
+tiempo de recuperación;
+servicio.
+
+Menos presupuesto:
+
+puede generar deterioro.
+
+Más presupuesto policial:
+
+puede afectar:
+
+capacidad;
+equipamiento;
+respuesta.
+
+Más presupuesto Bomberos:
+
+puede afectar:
+
+respuesta;
+equipamiento.
+
+NO convertirlo en efectos instantáneos absurdos.
+
+==================================================
+13. DÉFICIT / SUPERÁVIT
+==================================================
+
+Calcular:
+
+INGRESOS - GASTOS.
+
+Puede resultar:
+
+SUPERÁVIT.
+
+EQUILIBRIO.
+
+DÉFICIT.
+
+Déficit persistente debe tener consecuencias dependiendo de cómo se financia.
+
+==================================================
+14. INFLACIÓN
+==================================================
+
+Crear modelo comprensible.
+
+NO:
+
+inflation += random.
+
+Debe reaccionar progresivamente a varias variables del sistema.
+
+Puede considerar simplificadamente:
+
+oferta monetaria;
+demanda;
+actividad;
+déficit/financiamiento;
+expectativas;
+eventos;
+oferta de productos.
+
+NO pretendo una simulación macroeconómica académica.
+
+QUIERO GAMEPLAY SISTÉMICO COHERENTE.
+
+==================================================
+15. EMPLEO
+==================================================
+
+EconomicSystem debe manejar:
+
+empleo;
+desempleo;
+salarios.
+
+Las políticas pueden influir progresivamente.
+
+Ejemplo:
+
+actividad aumenta
+→ empresas venden más
+→ empleo puede aumentar.
+
+No garantizar resultado automático.
+
+==================================================
+16. POBREZA / INGRESOS
+==================================================
+
+PopulationSystem puede representar:
+
+ingresos;
+costo de vida;
+empleo;
+precios.
+
+De ahí derivar indicadores sociales.
+
+Las políticas pueden afectar distintos sectores de manera diferente.
+
+==================================================
+17. OPINIÓN PÚBLICA
+==================================================
+
+NO quiero una única barra que sube y baja arbitrariamente.
+
+Crear grupos sociales.
+
+Ejemplos:
+
+TRABAJADORES.
+
+CLASE MEDIA.
+
+EMPRESARIOS/COMERCIANTES.
+
+JÓVENES.
+
+JUBILADOS.
+
+EMPLEADOS PÚBLICOS.
+
+SECTORES DE MENORES INGRESOS.
+
+Cada grupo tiene prioridades.
+
+Una misma medida puede:
+
+SUBIR apoyo de un grupo
+
+Y
+
+BAJAR apoyo de otro.
+
+==================================================
+18. APROBACIÓN PRESIDENCIAL
+==================================================
+
+Mostrar:
+
+APROBACIÓN.
+
+DESAPROBACIÓN.
+
+INDECISOS/NEUTRAL si corresponde.
+
+Pero derivarlo de la simulación.
+
+Factores:
+
+economía;
+promesas;
+servicios;
+seguridad;
+eventos;
+escándalos;
+leyes;
+gestión;
+crisis.
+
+==================================================
+19. PARTIDOS DE OPOSICIÓN
+==================================================
+
+LOS QUE PIERDEN NO DEJAN DE JUGAR.
+
+Los partidos opositores pueden:
+
+criticar medidas;
+apoyarlas;
+negociarlas;
+rechazarlas;
+proponer alternativas;
+hacer campaña;
+organizar actos;
+participar en debates;
+negociar votos;
+prepararse para siguiente elección.
+
+==================================================
+20. CONGRESO — REPRESENTACIÓN
+==================================================
+
+Mantener bancas simuladas.
+
+No necesitamos 100 jugadores.
+
+Ejemplo:
+
+100 bancas.
+
+PARTIDO A:
+42.
+
+PARTIDO B:
+33.
+
+PARTIDO C:
+25.
+
+Los jugadores humanos controlan políticamente sus partidos.
+
+Los legisladores/bancas simuladas pueden responder a:
+
+disciplina partidaria;
+ideología;
+contenido del proyecto;
+opinión pública;
+negociaciones;
+contexto.
+
+==================================================
+21. NEGOCIACIÓN
+==================================================
+
+ESTO TIENE QUE SER DIVERTIDO EN MULTIPLAYER.
+
+Ejemplo:
+
+Presidente necesita 51 votos.
+
+Tiene 42.
+
+Debe hablar con otro partido.
+
+Con chat de voz puede decir:
+
+"Te acepto modificar el artículo X si apoyás el proyecto."
+
+El otro jugador puede aceptar o rechazar.
+
+Después:
+
+MODIFICAR PROYECTO.
+
+Y recién ahí:
+
+VOTAR.
+
+==================================================
+22. NO BOTÓN MÁGICO DE NEGOCIACIÓN
+==================================================
+
+NO quiero:
+
+"NEGOCIAR"
+
+→ 70% éxito.
+
+La negociación entre jugadores humanos debe ocurrir REALMENTE.
+
+VOICE CHAT es fundamental.
+
+El sistema puede aportar:
+
+propuestas;
+enmiendas;
+condiciones;
+registro de acuerdos;
+
+pero los jugadores negocian.
+
+==================================================
+23. ENMIENDAS
+==================================================
+
+Permitir modificar proyectos antes de votarlos.
+
+Ejemplo:
+
+Proyecto original:
+
+Impuesto 25%.
+
+Oposición:
+
+"Te voto si queda en 22%."
+
+Gobierno acepta.
+
+Proyecto cambia:
+
+22%.
+
+Se vota ESA versión.
+
+==================================================
+24. VOTACIÓN
+==================================================
+
+Opciones:
+
+A FAVOR.
+
+EN CONTRA.
+
+ABSTENCIÓN.
+
+Mostrar:
+
+PRESENTES.
+
+A FAVOR.
+
+EN CONTRA.
+
+ABSTENCIONES.
+
+Resultado.
+
+==================================================
+25. MAYORÍAS
+==================================================
+
+Configurar:
+
+quórum.
+
+mayoría simple.
+
+mayoría absoluta.
+
+mayorías especiales.
+
+Las reformas constitucionales pueden requerir mayorías especiales.
+
+==================================================
+26. VETO PRESIDENCIAL
+==================================================
+
+Si el sistema constitucional lo permite:
+
+Presidente puede:
+
+PROMULGAR.
+
+VETAR.
+
+Preparar:
+
+veto total/parcial si posteriormente queremos profundidad.
+
+El Congreso puede tener mecanismo configurable para insistencia.
+
+==================================================
+27. CONSTITUCIÓN
+==================================================
+
+LA CONSTITUCIÓN ES UNA CAPA SUPERIOR.
+
+Debe definir reglas como:
+
+duración del mandato;
+reelección;
+facultades del Presidente;
+facultades del Juez;
+Congreso;
+mayorías;
+elecciones;
+derechos;
+reglas institucionales.
+
+NO hacer que el Presidente pueda cambiar Constitución con un click.
+
+Reforma:
+
+procedimiento especial.
+
+==================================================
+28. PODER JUDICIAL
+==================================================
+
+EL JUGADOR JUEZ TIENE GAMEPLAY POLÍTICO/INSTITUCIONAL REAL.
+
+No solamente procesa delincuentes.
+
+También preparar:
+
+CONTROL DE CONSTITUCIONALIDAD.
+
+Si aparece un caso relevante sobre una ley/medida:
+
+el Juez puede tener que resolver.
+
+==================================================
+29. CONFLICTO ENTRE PRESIDENTE Y JUEZ
+==================================================
+
+Esto puede ser una parte MUY interesante.
+
+Ejemplo:
+
+Presidente impulsa ley.
+
+Congreso aprueba.
+
+Aparece impugnación.
+
+Caso llega al Tribunal.
+
+Jugador Juez analiza.
+
+Puede resolver según sistema/reglas:
+
+CONSTITUCIONAL.
+
+INCONSTITUCIONAL.
+
+PARCIALMENTE INVÁLIDA si posteriormente implementamos detalle.
+
+NO quiero que el Juez simplemente pueda borrar cualquier ley porque quiere.
+
+Debe existir:
+
+CASO
++
+FUNDAMENTO/REGLA
++
+PROCEDIMIENTO.
+
+==================================================
+30. JUEZ NO ES SUBORDINADO DEL PRESIDENTE
+==================================================
+
+Aunque ambos hayan ganado como fórmula del mismo partido:
+
+SON DOS JUGADORES.
+
+El Presidente NO controla al Juez.
+
+El Juez puede tomar decisiones contrarias al gobierno.
+
+Esto debe producir consecuencias políticas.
+
+==================================================
+31. DECRETOS / MEDIDAS EJECUTIVAS
+==================================================
+
+Crear arquitectura para medidas ejecutivas.
+
+Pero definir límites.
+
+Una medida ejecutiva puede hacer solamente aquello permitido por las reglas constitucionales.
+
+No utilizar decreto como:
+
+"evitar Congreso siempre".
+
+==================================================
+32. MINISTROS / ÁREAS DE GOBIERNO
+==================================================
+
+Como solamente tenemos 2 humanos por partido:
+
+NO necesitamos un jugador humano por ministerio.
+
+Crear ministros/áreas simuladas.
+
+Ejemplos:
+
+ECONOMÍA.
+
+SALUD.
+
+SEGURIDAD.
+
+JUSTICIA.
+
+INTERIOR.
+
+El Presidente puede administrar equipo/áreas mediante UI.
+
+Posteriormente podrían existir más cargos humanos.
+
+==================================================
+33. CALIDAD DE GESTIÓN
+==================================================
+
+Las políticas no deberían ejecutarse perfectamente por magia.
+
+Preparar variables como:
+
+capacidad estatal;
+presupuesto;
+eficiencia;
+tiempo de implementación.
+
+Ejemplo:
+
+aprobar una política sanitaria enorme sin presupuesto suficiente:
+
+NO produce beneficio máximo automáticamente.
+
+==================================================
+34. MEDIDAS DE SEGURIDAD
+==================================================
+
+Políticas posibles:
+
+presupuesto policial;
+equipamiento;
+prioridades;
+regulación;
+penas mediante legislación;
+regulación de armas.
+
+Esto se conecta con:
+
+CrimeSystem.
+PoliceSystem.
+JusticeSystem.
+PrisonSystem.
+
+==================================================
+35. REGULACIÓN DE ARMAS
+==================================================
+
+Como existen armas físicas en ARGENTUM:
+
+las leyes pueden regularlas.
+
+Ejemplos configurables:
+
+tenencia;
+portación;
+venta;
+restricciones;
+penas.
+
+NO hardcodear una única política.
+
+El gobierno/Congreso puede cambiar reglas.
+
+Entonces:
+
+POLÍTICA
+→ LEY
+→ GAMEPLAY FÍSICO.
+
+==================================================
+36. POLÍTICA PENAL
+==================================================
+
+Las leyes pueden cambiar:
+
+penas;
+duraciones;
+tipificación;
+procedimientos simples.
+
+JusticeSystem consulta LEYES VIGENTES.
+
+No valores permanentes hardcodeados.
+
+==================================================
+37. SALUD
+==================================================
+
+Políticas sanitarias pueden modificar:
+
+presupuesto;
+capacidad;
+costos;
+servicios.
+
+Hospital físico refleja progresivamente algunos cambios cuando sea razonable.
+
+==================================================
+38. NEGOCIOS
+==================================================
+
+Políticas económicas afectan negocios.
+
+Ejemplos:
+
+impuestos;
+costos;
+demanda;
+regulación;
+subsidios.
+
+Los 20 Casa+Negocio forman parte de la economía real.
+
+==================================================
+39. EVENTOS
+==================================================
+
+Crear Political/Event System.
+
+Eventos posibles:
+
+recesión;
+crecimiento;
+aumento de inflación;
+crisis fiscal;
+protesta;
+huelga;
+problema de seguridad;
+emergencia;
+escándalo ficticio;
+conflicto institucional;
+incendio;
+crisis sanitaria;
+evento internacional abstracto.
+
+Los eventos deben tener:
+
+condiciones;
+probabilidad;
+causa;
+duración;
+efectos.
+
+NO puro RNG.
+
+==================================================
+40. CRISIS
+==================================================
+
+Algunos eventos requieren decisión presidencial.
+
+Ejemplo:
+
+CRISIS.
+
+Se presentan 2-4 respuestas posibles.
+
+Cada respuesta tiene:
+
+costo;
+riesgo;
+consecuencia potencial;
+efecto político.
+
+NO mostrar necesariamente todos los resultados exactos antes de elegir.
+
+==================================================
+41. PROTESTAS
+==================================================
+
+La población puede movilizarse.
+
+Motivos:
+
+economía;
+ley;
+servicio;
+desempleo;
+seguridad;
+medida impopular.
+
+La protesta puede aparecer FÍSICAMENTE en Plaza Central o calles cuando sea posible.
+
+Así conectamos:
+
+SIMULACIÓN
+→ MUNDO 2D.
+
+==================================================
+42. MEDIOS Y NOTICIAS
+==================================================
+
+NewsSystem.
+
+Los acontecimientos reales generan noticias.
+
+Ejemplos:
+
+"CONGRESO APRUEBA REFORMA TRIBUTARIA."
+
+"PRESIDENTE VETA PROYECTO."
+
+"TRIBUNAL DECLARA INCONSTITUCIONAL UNA MEDIDA."
+
+"INFLACIÓN AUMENTA."
+
+"OPOSICIÓN CONVOCA A MOVILIZACIÓN."
+
+NO generar noticias desconectadas de lo ocurrido.
+
+==================================================
+43. MEDIOS
+==================================================
+
+Preparar MediaSystem.
+
+Medios ficticios pueden tener:
+
+nombre;
+credibilidad;
+línea editorial;
+audiencia.
+
+Pueden afectar PERCEPCIÓN moderadamente.
+
+NO controlar mágicamente votos.
+
+==================================================
+44. DEBATES
+==================================================
+
+Durante campaña:
+
+DEBATES MULTIJUGADOR CON VOZ.
+
+Candidatos presidenciales pueden participar.
+
+Idealmente:
+
+evento;
+escenario físico;
+turnos;
+preguntas;
+tiempo;
+voz.
+
+Después puede existir efecto moderado sobre opinión pública según sistema.
+
+NO intentar analizar automáticamente "quién argumentó mejor" mediante una regla absurda.
+
+Podemos usar mecanismos de reacción/encuestas/eventos.
+
+==================================================
+45. ACTOS DE CAMPAÑA
+==================================================
+
+Plaza Central y otros lugares pueden utilizarse.
+
+Jugador físicamente:
+
+va al lugar.
+
+Participa del acto.
+
+Voice chat.
+
+El evento afecta campaña según:
+
+asistencia;
+organización;
+popularidad;
+contexto.
+
+==================================================
+46. ENCUESTAS
+==================================================
+
+NO son verdad absoluta.
+
+Mostrar:
+
+intención de voto.
+
+margen de error.
+
+tendencia.
+
+segmentos.
+
+Puede haber pequeñas diferencias entre encuestas.
+
+==================================================
+47. ELECCIÓN ONLINE AUTORITATIVA
+==================================================
+
+Cuando llega fecha:
+
+todos reciben evento electoral.
+
+Resultado se calcula UNA VEZ en autoridad/servidor.
+
+Todos reciben mismo resultado.
+
+NO calcular elección independientemente en cada cliente.
+
+==================================================
+48. DISTRIBUCIÓN DE BANCAS
+==================================================
+
+Después de elección:
+
+resultado legislativo.
+
+Distribuir bancas según fórmula configurable.
+
+Mostrar visualmente:
+
+HEMICICLO / COMPOSICIÓN.
+
+Ejemplo:
+
+100 escaños.
+
+Mayoría:
+51.
+
+==================================================
+49. ASUNCIÓN
+==================================================
+
+Después:
+
+Presidente ganador asume.
+
+Juez correspondiente asume según la regla actual.
+
+Partidos perdedores:
+
+OPOSICIÓN.
+
+Comienza mandato.
+
+==================================================
+50. CALENDARIO POLÍTICO
+==================================================
+
+TimeSystem controla:
+
+campaña;
+elección;
+asunción;
+mandato;
+sesiones;
+presupuesto;
+próxima elección.
+
+NO resolver una presidencia completa en 5 minutos salvo modo de testing.
+
+Crear velocidades/configuración apropiadas.
+
+==================================================
+51. HISTORIAL POLÍTICO
+==================================================
+
+Guardar:
+
+Presidentes.
+
+Jueces.
+
+Elecciones.
+
+Resultados.
+
+Leyes.
+
+Vetos.
+
+Gobiernos.
+
+Partidos.
+
+Crisis.
+
+Indicadores económicos.
+
+Esto crea historia emergente de la partida.
+
+==================================================
+52. ESTADÍSTICAS
+==================================================
+
+Teléfono / UI puede mostrar:
+
+PRESIDENTE ACTUAL.
+
+JUEZ ACTUAL.
+
+COMPOSICIÓN DEL CONGRESO.
+
+APROBACIÓN.
+
+INFLACIÓN.
+
+EMPLEO.
+
+BALANCE FISCAL.
+
+PRÓXIMA ELECCIÓN.
+
+ENCUESTAS.
+
+LEYES RECIENTES.
+
+==================================================
+53. POLÍTICA EN MULTIPLAYER
+==================================================
+
+TODO LO IMPORTANTE DEBE SER COMPARTIDO.
+
+Servidor/autoridad mantiene:
+
+PoliticalState.
+
+ElectionState.
+
+CongressState.
+
+LawState.
+
+EconomicState.
+
+PublicOpinionState.
+
+Todos los jugadores ven el mismo país.
+
+==================================================
+54. CHAT DE VOZ ES PARTE DE LA POLÍTICA
+==================================================
+
+YA ESTÁ PEDIDO CHAT DE VOZ ONLINE REAL.
+
+USARLO EN:
+
+PROXIMITY.
+
+PARTY.
+
+CONGRESS.
+
+DEBATES.
+
+AUDIENCIAS.
+
+POLICE RADIO.
+
+FIRE RADIO.
+
+La política multiplayer debe permitir:
+
+HABLAR
++
+NEGOCIAR
++
+CONVENCER
++
+ACORDAR
++
+DISCUTIR.
+
+==================================================
+55. UI DE GOBIERNO
+==================================================
+
+Crear progresivamente una interfaz política buena.
+
+Presidente puede consultar:
+
+SITUACIÓN DEL PAÍS.
+
+ECONOMÍA.
+
+PRESUPUESTO.
+
+APROBACIÓN.
+
+CONGRESO.
+
+PROYECTOS.
+
+LEYES.
+
+MEDIDAS.
+
+PROMESAS.
+
+EVENTOS.
+
+NO convertir toda la experiencia en dashboard.
+
+Puede abrir esta UI desde su personaje/contexto.
+
+==================================================
+56. PANEL DE MEDIDAS
+==================================================
+
+Cada medida debe mostrar ANTES de confirmar:
+
+NOMBRE.
+
+DESCRIPCIÓN.
+
+REQUISITOS.
+
+COSTO.
+
+PROCEDIMIENTO.
+
+POSIBLES EFECTOS GENERALES.
+
+APOYO POLÍTICO estimado si corresponde.
+
+NO revelar necesariamente números exactos de todas las consecuencias.
+
+Ejemplo:
+
+AUMENTAR PRESUPUESTO DE SALUD.
+
+Costo:
+alto.
+
+Requiere:
+presupuesto / procedimiento correspondiente.
+
+Posibles efectos:
+
++ capacidad sanitaria.
+- balance fiscal.
+
+==================================================
+57. NO HACER POLÍTICA CON SLIDERS MÁGICOS
+==================================================
+
+NO:
+
+INFLACIÓN = 2%.
+
+NO:
+
+POPULARIDAD = 90%.
+
+NO:
+
+DESEMPLEO = 0%.
+
+El jugador modifica:
+
+POLÍTICAS.
+
+LEYES.
+
+PRESUPUESTOS.
+
+IMPUESTOS.
+
+DECISIONES.
+
+Después:
+
+LA SIMULACIÓN PRODUCE RESULTADOS.
+
+==================================================
+58. TRADE-OFFS
+==================================================
+
+NO debe existir una estrategia universal perfecta.
+
+Ejemplos:
+
+BAJAR IMPUESTOS:
+
+puede aumentar ingreso disponible/incentivos,
+pero reducir recaudación.
+
+AUMENTAR GASTO:
+
+puede mejorar servicios,
+pero empeorar balance.
+
+SUBIR IMPUESTOS:
+
+puede aumentar recaudación,
+pero afectar ciertos sectores/actividad.
+
+MAYOR SEGURIDAD:
+
+puede mejorar respuesta,
+pero requiere presupuesto y puede generar debates según medidas.
+
+El resultado depende del contexto.
+
+==================================================
+59. NEUTRALIDAD POLÍTICA
+==================================================
+
+ARGENTUM ES UN JUEGO.
+
+NO PROPAGANDA.
+
+NO programar:
+
+IZQUIERDA = MALA.
+
+DERECHA = MALA.
+
+LIBERAL = MALO.
+
+SOCIALISTA = MALO.
+
+CONSERVADOR = MALO.
+
+PERONISTA = MALO/BUENO.
+
+ETC.
+
+Crear sistemas donde distintas políticas tengan:
+
+BENEFICIOS
++
+COSTOS
++
+RIESGOS
++
+CONTEXTO.
+
+==================================================
+60. PARTIDOS FICTICIOS
+==================================================
+
+Preferir universo ficticio.
+
+Inspiración argentina.
+
+No necesitamos políticos reales.
+
+No necesitamos copiar partidos reales.
+
+Los jugadores crean sus propias fuerzas.
+
+==================================================
+61. MEDIDAS INICIALES QUE QUIERO DISPONIBLES
+==================================================
+
+IMPLEMENTAR PROGRESIVAMENTE UN CATÁLOGO DATA-DRIVEN.
+
+Como mínimo preparar estas categorías:
+
+ECONOMÍA:
+- impuestos;
+- gasto;
+- deuda;
+- inversión;
+- regulación.
+
+SALUD:
+- presupuesto hospitalario;
+- cobertura/servicios;
+- equipamiento.
+
+SEGURIDAD:
+- presupuesto policial;
+- equipamiento;
+- prioridades.
+
+JUSTICIA:
+- presupuesto;
+- política penitenciaria;
+- reformas mediante ley.
+
+TRABAJO:
+- salario mínimo si existe en reglas;
+- empleo público;
+- regulaciones laborales.
+
+SOCIAL:
+- ayudas/programas;
+- transferencias;
+- vivienda si posteriormente se implementa.
+
+COMERCIO:
+- impuestos;
+- regulación;
+- incentivos.
+
+ARMAS:
+- regulación;
+- venta;
+- tenencia/portación según ley.
+
+INSTITUCIONAL:
+- reformas;
+- reglas electorales;
+- funcionamiento estatal.
+
+==================================================
+62. DATA-DRIVEN
+==================================================
+
+NO crear cada medida mediante 500 if hardcodeados.
+
+Diseñar:
+
+PolicyDefinition.
+
+PolicyEffect.
+
+Requirement.
+
+Cost.
+
+Duration.
+
+TargetSystem.
+
+LawRequirement.
+
+ConstitutionalRequirement.
+
+Esto permite agregar medidas después sin destruir código.
+
+==================================================
+63. EJEMPLO DE POLICY DEFINITION
+==================================================
+
+Conceptualmente:
+
+policyId
+
+name
+
+category
+
+description
+
+authorityRequired
+
+requiresLaw
+
+budgetCost
+
+implementationTime
+
+effects
+
+affectedGroups
+
+requirements
+
+cooldown si corresponde.
+
+Adaptar a arquitectura real.
+
+==================================================
+64. EFECTOS PROGRESIVOS
+==================================================
+
+NO todo instantáneo.
+
+Ejemplo:
+
+AUMENTAR PRESUPUESTO HOSPITALARIO HOY
+
+NO significa:
+
+HOY MISMO salud perfecta.
+
+Puede existir:
+
+IMPLEMENTATION TIME.
+
+Después efectos progresivos.
+
+==================================================
+65. FEEDBACK
+==================================================
+
+El jugador debe entender por qué cambió algo.
+
+Ejemplo:
+
+INFLACIÓN:
+8.2% → 9.1%.
+
+UI puede indicar factores principales aproximados.
+
+APROBACIÓN:
+54% → 49%.
+
+Factores:
+
+inflación;
+medida X;
+evento Y.
+
+NO caja negra absoluta.
+
+==================================================
+66. OBJETIVO DE GAMEPLAY
+==================================================
+
+QUIERO QUE DOS PARTIDAS SEAN DIFERENTES.
+
+Una puede tener:
+
+Gobierno fuerte
+→ mayoría legislativa
+→ reformas rápidas
+→ crisis económica
+→ caída de popularidad.
+
+Otra:
+
+Gobierno minoritario
+→ negociaciones
+→ coalición
+→ estabilidad
+→ conflicto judicial.
+
+Otra:
+
+economía fuerte
+→ escándalo
+→ protestas
+→ derrota electoral.
+
+ESTO DEBE EMERGER DE LOS SISTEMAS.
+
+==================================================
+67. PRIMER VERTICAL SLICE POLÍTICO
+==================================================
+
+PRIORIZAR IMPLEMENTAR COMPLETAMENTE ESTA CADENA:
+
+LOBBY.
+
+3 PARTIDOS DE TEST.
+
+2 PERSONAS POR PARTIDO.
+
+CAMPAÑA.
+
+ENCUESTAS.
+
+ELECCIÓN.
+
+GANADOR.
+
+100 BANCAS DISTRIBUIDAS.
+
+PRESIDENTE.
+
+JUEZ.
+
+ECONOMÍA INICIAL.
+
+PRESIDENTE PROPONE:
+
+CAMBIO DEL IMPUESTO AL CONSUMO.
+
+CONGRESO:
+
+DEBATE/NEGOCIACIÓN.
+
+PROYECTO:
+
+PUEDE MODIFICARSE.
+
+VOTACIÓN.
+
+SI APRUEBA:
+
+LEY.
+
+TAX SYSTEM CAMBIA.
+
+SUPERMERCADO USA NUEVA TASA.
+
+RECAUDACIÓN CAMBIA.
+
+BUDGET SYSTEM CAMBIA.
+
+ECONOMÍA REACCIONA CON EL TIEMPO.
+
+OPINIÓN PÚBLICA REACCIONA.
+
+NEWS SYSTEM PUBLICA RESULTADO.
+
+ENCUESTAS CAMBIAN.
+
+ESO ES EL PRIMER GRAN LOOP POLÍTICO.
+
+==================================================
+68. SEGUNDO VERTICAL SLICE POLÍTICO
+==================================================
+
+Después:
+
+PRESUPUESTO DE SEGURIDAD.
+
+Presidente propone/cambia según procedimiento.
+
+Resultado afecta PoliceSystem.
+
+Luego puede ocurrir:
+
+CRIMEN
+→ POLICÍA
+→ DETENCIÓN
+→ TRIBUNAL
+→ JUEZ HUMANO
+→ DECISIÓN
+→ CÁRCEL/LIBERTAD.
+
+==================================================
+69. TERCER VERTICAL SLICE
+==================================================
+
+POLÍTICA DE ARMAS.
+
+Congreso modifica regulación.
+
+Después esa ley cambia reglas reales para:
+
+COMPRA.
+TENENCIA.
+PORTACIÓN.
+DELITOS relacionados.
+
+==================================================
+70. TEST MULTIPLAYER POLÍTICO
+==================================================
+
+Cuando networking esté operativo:
+
+PROBAR CON DOS O MÁS CLIENTES.
+
+Ejemplo:
+
+Cliente A:
+Partido/Gobierno.
+
+Cliente B:
+Oposición/Juez según setup.
+
+Ambos deben ver:
+
+MISMO PROYECTO.
+
+MISMO TEXTO.
+
+MISMA VERSIÓN.
+
+MISMO CONTEO.
+
+MISMA LEY.
+
+MISMA ECONOMÍA.
+
+MISMA APROBACIÓN.
+
+==================================================
+71. NO PERDER TODO EL TIEMPO EN POLISH
+==================================================
+
+La UI debe ser usable.
+
+Pero ahora:
+
+SISTEMA FUNCIONAL > ANIMACIÓN BONITA.
+
+Primero:
+
+QUE LA POLÍTICA FUNCIONE.
+
+Después:
+
+pulido visual.
+
+==================================================
+72. CONTINUAR_AQUI.md
+==================================================
+
+AGREGAR:
+
+## POLITICAL SYSTEM
+
+Estado.
+
+## PARTIES
+
+Estado.
+
+## CAMPAIGN
+
+Estado.
+
+## PROMISES
+
+Estado.
+
+## ELECTIONS
+
+Estado.
+
+## PRESIDENT
+
+Estado.
+
+## JUDGE
+
+Estado.
+
+## CONGRESS
+
+Estado.
+
+## SEATS
+
+Estado.
+
+## BILLS
+
+Estado.
+
+## AMENDMENTS
+
+Estado.
+
+## VOTING
+
+Estado.
+
+## LAWS
+
+Estado.
+
+## POLICIES / GOVERNMENT MEASURES
+
+Medidas implementadas.
+
+Medidas funcionales.
+
+Medidas pendientes.
+
+## CONSTITUTION
+
+Estado.
+
+## ECONOMY
+
+Variables activas.
+
+## TAXES
+
+Estado.
+
+## BUDGET
+
+Estado.
+
+## PUBLIC OPINION
+
+Estado.
+
+## POLITICAL EVENTS
+
+Estado.
+
+## NEWS
+
+Estado.
+
+## POLITICAL MULTIPLAYER SYNC
+
+Qué está sincronizado.
+
+Qué falta.
+
+==================================================
+73. PRIORIDAD ACTUAL ACTUALIZADA
+==================================================
+
+NO abandones el trabajo necesario para conseguir multiplayer online real.
+
+PERO EN CUANTO LA FOUNDATION LO PERMITA:
+
+PRIORIZAR:
+
+ONLINE FOUNDATION
+→ LOBBY
+→ PARTIDOS
+→ CAMPAÑA
+→ ELECCIÓN
+→ PRESIDENTE/JUEZ
+→ CONGRESO
+→ PROYECTOS
+→ MEDIDAS
+→ LEYES
+→ ECONOMÍA
+→ OPINIÓN PÚBLICA
+→ NUEVA ELECCIÓN.
+
+MUNDO FÍSICO, INTERIORES, ARMAS, FÚTBOL, CRIMEN, ETC. SIGUEN SIENDO PARTE OBLIGATORIA DEL JUEGO.
+
+PERO:
+
+LA POLÍTICA ES EL CORAZÓN.
+
+==================================================
+74. REGLA FINAL
+==================================================
+
+NO QUIERO QUE "SER PRESIDENTE" SIGNIFIQUE:
+
+GANÉ ELECCIÓN
++
+TENGO UN TÍTULO SOBRE MI PERSONAJE.
+
+QUIERO QUE SIGNIFIQUE:
+
+TENGO PODER POLÍTICO REAL LIMITADO POR INSTITUCIONES.
+
+PUEDO TOMAR MEDIDAS.
+
+PUEDO PROPONER LEYES.
+
+NECESITO VOTOS.
+
+PUEDO NEGOCIAR.
+
+PUEDO VETAR CUANDO CORRESPONDA.
+
+ADMINISTRO PRESUPUESTO.
+
+RESPONDO A CRISIS.
+
+MIS DECISIONES CAMBIAN LA ECONOMÍA.
+
+MIS DECISIONES CAMBIAN LOS SERVICIOS.
+
+MIS DECISIONES CAMBIAN LA OPINIÓN PÚBLICA.
+
+PUEDO PERDER APOYO.
+
+PUEDO PERDER LA PRÓXIMA ELECCIÓN.
+
+EL CONGRESO PUEDE BLOQUEARME.
+
+LA OPOSICIÓN PUEDE NEGOCIAR O ENFRENTARME.
+
+EL JUEZ PUEDE TOMAR DECISIONES CONTRARIAS A MI GOBIERNO CUANDO EL SISTEMA JUDICIAL LO PERMITE.
+
+Y TODO ESTO OCURRE:
+
+ONLINE
++
+CON JUGADORES REALES
++
+CON CHAT DE VOZ
++
+DENTRO DEL MUNDO 2D FÍSICO DE ARGENTUM.
+
+NO ME RESPONDAS SOLAMENTE CON UN PLAN.
+
+INSPECCIONÁ QUÉ EXISTE.
+
+IMPLEMENTÁ ESTA ARQUITECTURA SOBRE EL PROYECTO REAL.
+
+PRIORIZÁ UNA CADENA POLÍTICA COMPLETA.
+
+EJECUTALA.
+
+PROBALA.
+
+PROBALA EN MULTIPLAYER CUANDO SEA POSIBLE.
+
+CORREGILA.
+
+DOCUMENTÁ CONTINUAR_AQUI DURANTE EL PROCESO.
+
+Y SEGUÍ.
+
+EMPEZÁ YA.

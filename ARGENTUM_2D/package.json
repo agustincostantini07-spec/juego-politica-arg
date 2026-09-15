@@ -1,0 +1,22 @@
+{
+  "name": "argentum-2d",
+  "version": "3.1.0",
+  "private": true,
+  "description": "Authoritative online 2D political world with room lobbies and WebRTC voice",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test tests/v2.test.cjs tests/controls.test.cjs tests/accessibility.test.cjs tests/network.test.cjs tests/online-ui.test.cjs tests/voice.test.cjs tests/governance.test.cjs",
+    "test:engine": "node --test tests/v2.test.cjs tests/accessibility.test.cjs",
+    "start": "node --env-file-if-exists=.env server/index.cjs",
+    "test:network": "node --test tests/network.test.cjs tests/online-ui.test.cjs tests/voice.test.cjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

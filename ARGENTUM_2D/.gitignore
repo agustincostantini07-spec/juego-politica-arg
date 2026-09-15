@@ -1,0 +1,14 @@
+*.bundle
+node_modules/
+*.log
+COMMIT_ENTREGA.txt
+
+.env
+.env.*
+!.env.example
+var/
+*.pem
+*.key
+deploy/coturn.conf
+
+*.private

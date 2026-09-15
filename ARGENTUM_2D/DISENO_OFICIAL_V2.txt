@@ -1,0 +1,1255 @@
+CORRECCIÓN / AMPLIACIÓN IMPORTANTE DEL DISEÑO DE ARGENTUM 2D
+
+ANTES DE SEGUIR DESARROLLANDO, INCORPORÁ ESTAS REGLAS COMO PARTE DEL DISEÑO OFICIAL.
+
+ESTAS REGLAS REEMPLAZAN CUALQUIER PARTE DEL PROMPT ANTERIOR QUE ENTRE EN CONFLICTO CON ELLAS.
+
+==================================================
+1. ARGENTUM 2D SIGUE SIENDO UN MUNDO FÍSICO
+==================================================
+
+NO quiero que por ser 2D el mundo se convierta en:
+
+MAPA
+→ CLICK EDIFICIO
+→ MENÚ.
+
+Quiero un videojuego 2D físicamente explorable.
+
+El jugador controla físicamente a su personaje.
+
+Puede:
+
+caminar;
+correr;
+entrar a edificios;
+recorrer interiores;
+usar puertas;
+sentarse;
+usar objetos;
+comprar;
+vender;
+recoger objetos;
+usar inventario;
+usar armas;
+ conducir/usar vehículos cuando estén implementados;
+jugar al fútbol;
+interactuar con otros personajes;
+realizar las actividades correspondientes a su rol.
+
+La política es el sistema central del juego,
+
+PERO EL MUNDO SIGUE SIENDO JUGABLE FÍSICAMENTE.
+
+==================================================
+2. INTERIORES FÍSICOS OBLIGATORIOS
+==================================================
+
+CORRECCIÓN IMPORTANTE DEL PROMPT ANTERIOR:
+
+NO quiero que entrar a un edificio simplemente abra una interfaz que represente el interior.
+
+QUIERO ENTRAR FÍSICAMENTE.
+
+Cuando el jugador entra a:
+
+CONGRESO
+HOSPITAL
+COMISARÍA
+TRIBUNAL
+CÁRCEL
+BOMBEROS
+SUPERMERCADO
+CASA
+NEGOCIO
+
+debe aparecer/controlarse físicamente dentro de un INTERIOR 2D JUGABLE.
+
+Puede implementarse mediante escenas interiores independientes para optimizar.
+
+Ejemplo:
+
+MUNDO EXTERIOR
+→ jugador toca/abre puerta
+→ transición corta
+→ INTERIOR 2D DEL EDIFICIO
+→ personaje aparece físicamente junto a la entrada.
+
+Para salir:
+
+INTERIOR
+→ puerta de salida
+→ EXTERIOR
+→ personaje reaparece físicamente frente al edificio.
+
+NO reemplazar interiores por menús.
+
+==================================================
+3. LOS INTERIORES DEBEN TENER ESPACIO REAL
+==================================================
+
+Cada interior debe contener habitaciones/zonas físicamente navegables.
+
+CONGRESO:
+
+entrada;
+hall;
+pasillos;
+recinto;
+sector presidencial/autoridades;
+asientos;
+escritorios;
+micrófonos;
+pantallas;
+puertas.
+
+TRIBUNAL:
+
+entrada;
+sala;
+estrado;
+sector juez;
+testigo;
+acusado;
+público.
+
+COMISARÍA:
+
+entrada;
+recepción;
+escritorios;
+computadoras;
+zona policial;
+sector de detenidos si corresponde.
+
+CÁRCEL:
+
+entrada;
+pasillos;
+celdas;
+puertas;
+camas;
+sanitarios;
+zonas operativas.
+
+HOSPITAL:
+
+recepción;
+pasillos;
+habitaciones;
+camas;
+sector médico.
+
+BOMBEROS:
+
+oficina;
+zona operativa;
+garage;
+equipamiento.
+
+SUPERMERCADO:
+
+entrada;
+pasillos;
+góndolas;
+heladeras;
+cajas;
+depósito.
+
+CASA+NEGOCIO:
+
+CASA:
+living;
+comedor;
+cocina;
+dormitorio;
+baño.
+
+NEGOCIO:
+sector público;
+productos;
+caja;
+depósito.
+
+==================================================
+4. OBJETOS FÍSICOS
+==================================================
+
+En la medida razonable, los objetos importantes deben existir físicamente en el mundo 2D.
+
+Ejemplos:
+
+armas;
+productos;
+pelota;
+camas;
+sillas;
+mesas;
+escritorios;
+computadoras;
+puertas;
+vehículos;
+carritos;
+equipamiento;
+extintores.
+
+La UI complementa al mundo.
+
+NO reemplaza innecesariamente al mundo.
+
+==================================================
+5. CANCHA F5 COMPLETAMENTE JUGABLE
+==================================================
+
+LA CANCHA DE FÚTBOL NO ES DECORACIÓN.
+
+El jugador debe poder ENTRAR físicamente a la cancha.
+
+Debe existir:
+
+césped;
+líneas;
+arcos;
+redes;
+límites;
+pelota física;
+jugadores.
+
+QUIERO PODER JUGAR REALMENTE AL FÚTBOL.
+
+==================================================
+6. SISTEMA DE FÚTBOL
+==================================================
+
+Crear un FootballSystem.
+
+La pelota debe existir como entidad física 2D.
+
+Debe poder:
+
+moverse;
+recibir impulso;
+rebotar razonablemente;
+detenerse progresivamente;
+entrar al arco;
+registrar gol;
+volver al juego.
+
+Jugador debe poder:
+
+correr;
+controlar/conducir pelota;
+pasar;
+patear;
+rematar.
+
+Posteriormente:
+
+arquero;
+atajar;
+interceptar.
+
+No necesito FIFA.
+
+Necesito un minijuego de fútbol REALMENTE JUGABLE.
+
+==================================================
+7. PARTIDOS DE FÚTBOL
+==================================================
+
+Preparar:
+
+Team A.
+Team B.
+
+Marcador.
+
+Tiempo.
+
+Goles.
+
+Reinicio después de gol.
+
+Inicio/fin de partido.
+
+Si inicialmente no existen suficientes jugadores humanos:
+
+permitir práctica y/o bots simples.
+
+==================================================
+8. ARMAS FÍSICAS
+==================================================
+
+ARGENTUM 2D permite armas.
+
+Las armas forman parte del InventorySystem.
+
+Ejemplos iniciales:
+
+arma de fuego;
+arma blanca.
+
+Las armas deben existir como objetos/equipables del juego.
+
+Jugador:
+
+obtiene arma
+→ inventario
+→ equipa
+→ personaje la sostiene/representa
+→ puede utilizarla.
+
+==================================================
+9. COMBATE 2D
+==================================================
+
+Implementar combate apropiado para la perspectiva elegida.
+
+Arma de fuego:
+
+apuntar;
+disparar;
+munición;
+recarga si corresponde;
+proyectil/raycast apropiado;
+impacto;
+daño;
+salud.
+
+Arma blanca:
+
+equipar;
+ataque corto;
+rango limitado;
+daño.
+
+NO hacer violencia gráfica/gore como prioridad.
+
+La importancia está en la MECÁNICA y sus consecuencias sistémicas.
+
+==================================================
+10. ARMAS + SISTEMA LEGAL
+==================================================
+
+MUY IMPORTANTE:
+
+NO quiero combate desconectado del resto de ARGENTUM.
+
+Ejemplo:
+
+JUGADOR DISPARA A OTRO
+→ HealthSystem recibe daño
+→ CrimeSystem registra posible delito
+→ PoliceSystem puede reaccionar
+→ existe detenido/sospechoso
+→ JusticeSystem puede intervenir
+→ Tribunal
+→ Juez
+→ posible condena
+→ Cárcel.
+
+Así se conectan:
+
+MUNDO FÍSICO
++
+COMBATE
++
+POLÍTICA
++
+LEYES
++
+JUSTICIA.
+
+==================================================
+11. LAS LEYES PUEDEN AFECTAR ARMAS/CRIMEN
+==================================================
+
+Preparar arquitectura para que leyes puedan modificar reglas del mundo.
+
+Ejemplos:
+
+regulación de armas;
+penas;
+autoridad policial;
+duración de condenas;
+presupuesto policial.
+
+NO hardcodear toda la legislación para siempre.
+
+LawSystem debe poder afectar sistemas físicos.
+
+==================================================
+12. MULTIPLAYER ES PARTE FUNDAMENTAL DEL DISEÑO
+==================================================
+
+CORRECCIÓN IMPORTANTE:
+
+Aunque podemos desarrollar primero sistemas localmente para probarlos,
+
+ARGENTUM 2D ESTÁ PENSADO COMO JUEGO MULTIJUGADOR.
+
+Por eso la arquitectura debe prepararse DESDE EL PRINCIPIO para:
+
+lobby;
+jugadores;
+partidos;
+roles;
+elecciones;
+estado compartido;
+leyes compartidas;
+economía compartida;
+mundo compartido.
+
+No implementar decisiones arquitectónicas que hagan extremadamente difícil convertirlo después a multiplayer.
+
+==================================================
+13. SALA DE ESPERA / LOBBY POLÍTICO
+==================================================
+
+ANTES DE COMENZAR CADA PARTIDA debe existir una:
+
+SALA DE ESPERA.
+
+Esta sala NO es solamente:
+
+"esperando jugadores".
+
+ES LA PRIMERA FASE POLÍTICA DE LA PARTIDA.
+
+Los jugadores deben formar PARTIDOS POLÍTICOS.
+
+==================================================
+14. CREACIÓN DE PARTIDOS EN EL LOBBY
+==================================================
+
+Durante la sala de espera:
+
+los jugadores pueden crear/unirse a partidos.
+
+Cada partido tiene:
+
+partyId;
+nombre;
+sigla;
+color;
+identidad visual;
+plataforma/ideología;
+miembros.
+
+REGLA FUNDAMENTAL:
+
+CADA PARTIDO POLÍTICO ESTÁ FORMADO POR EXACTAMENTE 2 JUGADORES.
+
+NO 1.
+
+NO 3.
+
+EXACTAMENTE 2.
+
+==================================================
+15. LOS DOS CARGOS DE CADA PARTIDO
+==================================================
+
+Cada partido presenta exactamente dos personas:
+
+1. CANDIDATO A PRESIDENTE.
+
+2. CANDIDATO A JUEZ.
+
+Por lo tanto:
+
+PARTIDO A
+→ Jugador 1 = PRESIDENTE
+→ Jugador 2 = JUEZ.
+
+PARTIDO B
+→ Jugador 3 = PRESIDENTE
+→ Jugador 4 = JUEZ.
+
+PARTIDO C
+→ Jugador 5 = PRESIDENTE
+→ Jugador 6 = JUEZ.
+
+etc.
+
+Los cargos inicialmente son CANDIDATURAS.
+
+No reciben automáticamente el cargo.
+
+==================================================
+16. LOBBY FÍSICO O UI
+==================================================
+
+La sala de espera puede tener una interfaz fuerte para facilitar organización.
+
+Debe mostrar claramente:
+
+JUGADORES CONECTADOS.
+
+PARTIDOS CREADOS.
+
+PARTIDOS INCOMPLETOS.
+
+PARTIDOS COMPLETOS.
+
+CANDIDATO A PRESIDENTE.
+
+CANDIDATO A JUEZ.
+
+Estado READY.
+
+Ejemplo:
+
+PARTIDO FEDERAL
+
+Presidente:
+JugadorA ✓
+
+Juez:
+JugadorB ✓
+
+PARTIDO REPUBLICANO
+
+Presidente:
+JugadorC ✓
+
+Juez:
+VACANTE.
+
+Ese segundo partido todavía NO está completo.
+
+==================================================
+17. READY
+==================================================
+
+Un partido sólo está READY cuando:
+
+tiene exactamente 2 jugadores
+
+Y
+
+uno ocupa candidatura presidencial
+
+Y
+
+otro ocupa candidatura judicial.
+
+No puede comenzar incorrectamente configurado.
+
+==================================================
+18. COMIENZO DE PARTIDA
+==================================================
+
+Cuando se cumplen las condiciones de inicio:
+
+LOBBY
+→ PARTIDOS CERRADOS
+→ GENERACIÓN/INICIALIZACIÓN DEL MUNDO
+→ COMIENZA LA PARTIDA.
+
+PERO:
+
+NO ELEGIR PRESIDENTE AUTOMÁTICAMENTE.
+
+Al comenzar:
+
+LOS PARTIDOS ENTRAN EN CAMPAÑA.
+
+==================================================
+19. FASE DE CAMPAÑA
+==================================================
+
+Primera gran fase de cada partida:
+
+CAMPAÑA ELECTORAL.
+
+Los partidos ya existen.
+
+Cada uno tiene:
+
+candidato presidencial;
+candidato judicial;
+plataforma;
+identidad;
+reputación inicial.
+
+Durante campaña pueden:
+
+hacer propuestas;
+presentar plataforma;
+participar en debates;
+realizar actos;
+hacer publicidad/campaña;
+buscar apoyo;
+interactuar con ciudadanos;
+reaccionar a noticias;
+competir por intención de voto.
+
+==================================================
+20. CAMPAÑA EN EL MUNDO FÍSICO
+==================================================
+
+NO quiero que toda campaña sea solamente botones.
+
+El mundo 2D puede participar.
+
+Ejemplos:
+
+acto en Plaza Central;
+visitar negocios;
+recorrer barrio;
+hablar con ciudadanos;
+debate en edificio institucional;
+eventos;
+actividad pública.
+
+La UI sirve para sistemas complejos.
+
+El mundo sirve para vivirlos.
+
+==================================================
+21. ENCUESTAS DURANTE CAMPAÑA
+==================================================
+
+Mostrar intención de voto.
+
+Las encuestas NO deben revelar exactamente el resultado.
+
+Considerar:
+
+plataforma;
+acciones;
+economía/contexto;
+campaña;
+eventos;
+debates;
+popularidad;
+sectores;
+margen de error.
+
+==================================================
+22. ELECCIÓN
+==================================================
+
+Después del período de campaña:
+
+ELECCIÓN.
+
+Los ciudadanos/jugadores habilitados votan según las reglas configuradas.
+
+Debe existir:
+
+urna/sistema;
+voto;
+conteo;
+resultado.
+
+==================================================
+23. ELECCIÓN PRESIDENCIAL
+==================================================
+
+Los candidatos presidenciales compiten.
+
+Ganador:
+
+asume PRESIDENTE.
+
+NO simplemente darle el cargo al creador del lobby.
+
+==================================================
+24. ELECCIÓN / DESIGNACIÓN DEL JUEZ
+==================================================
+
+El candidato judicial forma parte de la propuesta electoral de cada partido.
+
+Para la primera versión:
+
+el partido ganador coloca:
+
+PRESIDENTE GANADOR
++
+JUEZ DEL PARTIDO GANADOR.
+
+PERO diseñar este mecanismo como CONFIGURABLE.
+
+En el futuro podemos cambiarlo por:
+
+elección judicial independiente;
+designación;
+confirmación legislativa;
+otro sistema constitucional.
+
+NO acoplar todo el código a una única regla irreversible.
+
+==================================================
+25. DESPUÉS DE LAS ELECCIONES
+==================================================
+
+Una vez elegido el gobierno:
+
+PARTIDO GANADOR:
+
+Jugador presidencial
+→ PRESIDENTE.
+
+Jugador judicial
+→ JUEZ.
+
+Los demás partidos:
+
+→ OPOSICIÓN.
+
+PERO siguen participando.
+
+NO desaparecen del juego.
+
+Pueden:
+
+hacer campaña;
+criticar;
+negociar;
+participar políticamente;
+prepararse para próxima elección;
+tener actividad económica/social;
+intervenir en instituciones según futuros cargos/reglas.
+
+==================================================
+26. PROBLEMA IMPORTANTE: CONGRESO
+==================================================
+
+Como cada partido tiene solamente 2 jugadores y esos jugadores son Presidente + Juez, NO podemos depender de tener decenas de jugadores humanos para llenar el Congreso.
+
+Por lo tanto:
+
+EL CONGRESO DEBE TENER REPRESENTACIÓN SISTÉMICA.
+
+Cada partido obtiene bancas según el sistema electoral.
+
+Las bancas pueden estar representadas mediante:
+
+legisladores NPC;
+delegados;
+bloques;
+votos ponderados;
+
+según lo que produzca mejor gameplay.
+
+El jugador humano del partido puede controlar/dirigir políticamente su bloque cuando corresponda.
+
+Así podemos tener:
+
+4 partidos humanos
+=
+8 jugadores
+
+PERO:
+
+50/100/etc. bancas simuladas en Congreso.
+
+==================================================
+27. COMPOSICIÓN DEL CONGRESO
+==================================================
+
+Las elecciones determinan:
+
+porcentaje de votos;
+bancas;
+bloques;
+mayoría/minoría.
+
+Ejemplo conceptual:
+
+PARTIDO A:
+38%
+→ 38 bancas.
+
+PARTIDO B:
+31%
+→ 31 bancas.
+
+PARTIDO C:
+20%
+→ 20 bancas.
+
+PARTIDO D:
+11%
+→ 11 bancas.
+
+Los números exactos deben ser configurables.
+
+==================================================
+28. GOBIERNO SIN MAYORÍA
+==================================================
+
+MUY IMPORTANTE.
+
+GANAR PRESIDENCIA NO SIGNIFICA CONTROLAR EL CONGRESO.
+
+Puede existir:
+
+Presidente Partido A
+
+PERO
+
+Partido A tiene sólo 38/100 bancas.
+
+Entonces necesita:
+
+negociar;
+formar coalición;
+modificar proyectos;
+convencer oposición.
+
+Esto debe ser parte CENTRAL del juego.
+
+==================================================
+29. JUEZ INDEPENDIENTE FUNCIONALMENTE
+==================================================
+
+Aunque el Juez haya sido candidato de un partido:
+
+una vez en funciones debe existir separación funcional.
+
+El Presidente NO controla botones del Juez.
+
+El jugador Juez toma decisiones judiciales.
+
+Esto genera gameplay entre jugadores.
+
+Ejemplo:
+
+Gobierno impulsa política.
+
+Surge caso judicial.
+
+Juez debe resolver dentro de las reglas.
+
+==================================================
+30. JUEZ FÍSICAMENTE JUGABLE
+==================================================
+
+El jugador Juez NO es una pantalla.
+
+Tiene personaje.
+
+Puede:
+
+caminar por ciudad;
+entrar al Tribunal;
+entrar a sala;
+sentarse en estrado;
+abrir caso;
+escuchar proceso;
+emitir decisión.
+
+Su interfaz judicial aparece DENTRO DEL CONTEXTO FÍSICO DEL TRIBUNAL.
+
+==================================================
+31. PRESIDENTE FÍSICAMENTE JUGABLE
+==================================================
+
+Igual para Presidente.
+
+Puede caminar por mundo.
+
+Entrar a instituciones.
+
+Ir al Congreso.
+
+Ir a Plaza.
+
+Visitar Hospital.
+
+Visitar Comisaría.
+
+Participar en eventos.
+
+Sus poderes políticos aparecen mediante interfaces contextuales.
+
+NO teletransportarlo permanentemente a una dashboard.
+
+==================================================
+32. POLÍTICA + MUNDO
+==================================================
+
+ESTA ES LA IDENTIDAD DEFINITIVA:
+
+ARGENTUM 2D ES UN JUEGO POLÍTICO PROFUNDO
+
+PERO
+
+TODO OCURRE DENTRO DE UN MUNDO 2D JUGABLE.
+
+No quiero elegir entre:
+
+SIMULADOR POLÍTICO
+
+O
+
+MUNDO ABIERTO 2D.
+
+QUIERO LOS DOS,
+
+con prioridad de desarrollo sobre la POLÍTICA.
+
+==================================================
+33. LOOP COMPLETO DE UNA PARTIDA
+==================================================
+
+OBJETIVO:
+
+SALA DE ESPERA
+→ JUGADORES
+→ CREACIÓN DE PARTIDOS
+→ 2 PERSONAS POR PARTIDO
+→ PRESIDENTE + JUEZ
+→ READY
+→ COMIENZA PARTIDA
+→ CAMPAÑA
+→ PROPUESTAS
+→ ENCUESTAS
+→ ELECCIÓN
+→ RESULTADOS
+→ DISTRIBUCIÓN DE BANCAS
+→ PRESIDENTE ASUME
+→ JUEZ ASUME
+→ OPOSICIÓN
+→ GOBIERNO
+→ CONGRESO
+→ PROYECTOS
+→ NEGOCIACIÓN
+→ VOTACIÓN
+→ LEYES
+→ ECONOMÍA
+→ SOCIEDAD
+→ CRIMEN
+→ POLICÍA
+→ JUSTICIA
+→ VIDA EN LA CIUDAD
+→ NUEVA CAMPAÑA
+→ NUEVA ELECCIÓN.
+
+Y mientras todo eso ocurre:
+
+LOS JUGADORES SIGUEN EXISTIENDO FÍSICAMENTE EN EL MUNDO 2D.
+
+==================================================
+34. LOOP FÍSICO
+==================================================
+
+También debe funcionar:
+
+CASA
+→ SALIR
+→ CAMINAR
+→ SUPERMERCADO
+→ ENTRAR
+→ COMPRAR
+→ SALIR
+→ CANCHA
+→ ENTRAR
+→ JUGAR FÚTBOL
+→ SALIR
+→ EQUIPAR OBJETO
+→ IR A PLAZA
+→ IR A INSTITUCIÓN.
+
+Y cuando corresponde:
+
+ARMA
+→ DISPARO
+→ DAÑO
+→ CRIMEN
+→ POLICÍA
+→ DETENCIÓN
+→ TRIBUNAL
+→ JUEZ
+→ SENTENCIA
+→ CÁRCEL.
+
+==================================================
+35. PRIORIDAD DE IMPLEMENTACIÓN ACTUALIZADA
+==================================================
+
+Construir en este orden aproximado:
+
+P0.
+FOUNDATION + WORLD STATE.
+
+P1.
+PERSONAJE 2D + MOVIMIENTO + COLISIONES.
+
+P2.
+MAPA EXTERIOR.
+
+P3.
+TRANSICIONES EXTERIOR/INTERIOR.
+
+P4.
+INTERIORES FÍSICOS BASE.
+
+P5.
+INTERACTION SYSTEM.
+
+P6.
+TIME SYSTEM.
+
+P7.
+PLAYER STATE + INVENTARIO + DINERO.
+
+P8.
+LOBBY.
+
+P9.
+PARTIDOS DE EXACTAMENTE 2 JUGADORES.
+
+P10.
+CANDIDATO PRESIDENTE + CANDIDATO JUEZ.
+
+P11.
+CAMPAÑA.
+
+P12.
+OPINIÓN PÚBLICA + ENCUESTAS.
+
+P13.
+ELECCIONES.
+
+P14.
+PRESIDENTE + JUEZ.
+
+P15.
+CONGRESO + BANCAS.
+
+P16.
+PROYECTOS + VOTACIÓN + LEYES.
+
+P17.
+ECONOMÍA.
+
+P18.
+NEGOCIOS/PRODUCTOS.
+
+P19.
+COMBATE/ARMAS.
+
+P20.
+CRIMEN/POLICÍA.
+
+P21.
+TRIBUNAL/JUEZ.
+
+P22.
+CÁRCEL.
+
+P23.
+FÚTBOL.
+
+P24.
+HOSPITAL.
+
+P25.
+BOMBEROS.
+
+P26.
+PROPIEDADES.
+
+P27.
+SAVE/LOAD.
+
+P28.
+PULIDO.
+
+==================================================
+36. VERTICAL SLICE ACTUALIZADO
+==================================================
+
+ANTES DE EXPANDIR TODO:
+
+QUIERO PODER HACER ESTO:
+
+NEW GAME / LOBBY
+
+→ crear Partido A.
+
+→ asignar Jugador 1 a PRESIDENTE.
+
+→ asignar Jugador 2 a JUEZ.
+
+→ crear otros partidos humanos o simulados para testing.
+
+→ READY.
+
+→ comenzar partida.
+
+→ aparecer físicamente en ciudad 2D.
+
+→ realizar campaña.
+
+→ avanzar tiempo.
+
+→ ver encuestas.
+
+→ realizar elección.
+
+→ obtener resultado.
+
+→ asignar bancas.
+
+→ Presidente ganador asume.
+
+→ Juez correspondiente asume.
+
+→ Presidente propone una ley.
+
+→ Congreso la vota.
+
+→ ley modifica una variable real.
+
+→ jugador camina físicamente al supermercado.
+
+→ entra físicamente.
+
+→ compra algo.
+
+→ sale.
+
+→ entra físicamente al Congreso.
+
+→ recorre el recinto.
+
+→ sale.
+
+→ entra físicamente a Cancha F5.
+
+→ toca/controla/patea una pelota.
+
+→ se registra un gol.
+
+→ puede equipar un arma de testing.
+
+→ disparar.
+
+→ HealthSystem registra daño.
+
+→ CrimeSystem registra el hecho.
+
+→ guardar.
+
+→ cargar.
+
+ESO YA SERÍA UN VERTICAL SLICE MUY FUERTE DE ARGENTUM 2D.
+
+==================================================
+37. NO HACER UN JUEGO DE MENÚS
+==================================================
+
+ESTA REGLA ES ABSOLUTA.
+
+La política puede usar interfaces complejas.
+
+La economía puede usar gráficos.
+
+El Congreso puede usar paneles.
+
+Las elecciones pueden usar UI.
+
+PERO EL MUNDO EXISTE FÍSICAMENTE.
+
+INTERIOR = ESPACIO JUGABLE.
+
+CANCHA = ESPACIO JUGABLE.
+
+TRIBUNAL = ESPACIO JUGABLE.
+
+CONGRESO = ESPACIO JUGABLE.
+
+SUPERMERCADO = ESPACIO JUGABLE.
+
+CÁRCEL = ESPACIO JUGABLE.
+
+CASA = ESPACIO JUGABLE.
+
+==================================================
+38. REGLA FINAL
+==================================================
+
+ARGENTUM 2D DEBE TERMINAR SIENDO:
+
+UN MUNDO 2D MULTIJUGADOR
++
+FÍSICAMENTE JUGABLE
++
+CON INTERIORES REALES
++
+FÚTBOL REALMENTE JUGABLE
++
+ARMAS Y COMBATE
++
+CRIMEN
++
+POLICÍA
++
+JUSTICIA
++
+CÁRCEL
++
+ECONOMÍA
++
+PROPIEDADES
++
+NEGOCIOS
+
+PERO SOBRE TODO:
+
+PARTIDOS
++
+CAMPAÑAS
++
+ELECCIONES
++
+PRESIDENTE
++
+JUEZ
++
+CONGRESO
++
+LEYES
++
+OPOSICIÓN
++
+NEGOCIACIÓN
++
+OPINIÓN PÚBLICA.
+
+CADA PARTIDO:
+
+EXACTAMENTE 2 JUGADORES.
+
+1 CANDIDATO A PRESIDENTE.
+
+1 CANDIDATO A JUEZ.
+
+LOS PARTIDOS SE FORMAN EN LA SALA DE ESPERA.
+
+LA PARTIDA EMPIEZA CON CAMPAÑA.
+
+DESPUÉS ELECCIONES.
+
+DESPUÉS GOBIERNO.
+
+Y TODO ESO SE VIVE DESDE PERSONAJES QUE SIGUEN EXISTIENDO FÍSICAMENTE DENTRO DEL MUNDO.
+
+INCORPORÁ ESTAS CORRECCIONES AL DISEÑO ACTUAL Y CONTINUÁ CONSTRUYENDO.
+
+NO TE DETENGAS A REESCRIBIRME TODO EL GDD.
+
+IMPLEMENTÁ.
+
+PROBÁ.
+
+JUGÁ.
+
+CORREGÍ.
+
+SEGUÍ.

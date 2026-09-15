@@ -1,0 +1,907 @@
+ARGENTUM 2D — MULTIPLAYER ONLINE REAL + SERVIDOR + VOZ
+
+CORRECCIÓN PRIORITARIA:
+
+QUIERO QUE ARGENTUM 2D SEA UN JUEGO MULTIJUGADOR ONLINE REAL Y QUE EXISTA INFRAESTRUCTURA/SERVIDOR PARA PODER JUGARLO DESDE COMPUTADORAS DISTINTAS A TRAVÉS DE INTERNET.
+
+NO QUIERO SOLAMENTE:
+
+- multiplayer-ready;
+- multiplayer local;
+- dos instancias en la misma PC;
+- arquitectura preparada para futuro;
+- un mockup de lobby;
+- networking simulado.
+
+QUIERO LLEGAR A:
+
+PC A
+→ ABRE ARGENTUM 2D.
+
+PC B, EN OTRA CONEXIÓN
+→ ABRE ARGENTUM 2D.
+
+AMBAS
+→ SE CONECTAN POR INTERNET
+→ ENTRAN A LA MISMA PARTIDA
+→ SE VEN
+→ SE MUEVEN
+→ HABLAN
+→ INTERACTÚAN
+→ COMPARTEN EL MISMO ESTADO POLÍTICO Y DEL MUNDO.
+
+==================================================
+TENÉS LIBERTAD TOTAL PARA RESOLVER LA INFRAESTRUCTURA
+==================================================
+
+NO QUIERO ELEGIR YO LA TECNOLOGÍA.
+
+INVESTIGÁ LAS OPCIONES DISPONIBLES Y ELEGÍ LA SOLUCIÓN MÁS CONVENIENTE.
+
+TENÉS AUTORIZACIÓN PARA:
+
+- configurar networking;
+- crear backend;
+- crear servidor;
+- configurar lobby;
+- configurar relay;
+- usar dedicated server;
+- usar host/client si resulta mejor inicialmente;
+- desplegar servicios;
+- configurar base de datos si realmente hace falta;
+- utilizar servicios cloud;
+- utilizar servicios multiplayer;
+- utilizar servicios de voz;
+- utilizar GitHub;
+- utilizar Vercel cuando corresponda;
+- investigar documentación online;
+- instalar paquetes/SDKs compatibles;
+- crear builds cliente/servidor;
+- desplegar lo necesario.
+
+ELEGÍ VOS LA ARQUITECTURA.
+
+NO ME PREGUNTES QUÉ PROVEEDOR PREFIERO salvo que exista una acción que obligatoriamente requiera que yo:
+
+- pague;
+- cree una cuenta;
+- acepte términos;
+- proporcione una credencial;
+- habilite un servicio manualmente.
+
+Si aparece uno de esos bloqueos:
+
+DECIME EXACTAMENTE QUÉ TENGO QUE HACER.
+
+Si existe una alternativa gratuita que evita el bloqueo:
+
+USALA y seguí.
+
+==================================================
+OBJETIVO DE INFRAESTRUCTURA
+==================================================
+
+Quiero que el juego tenga un entorno online funcional.
+
+Puede ser:
+
+DEDICATED SERVER
+
+O
+
+HOST + RELAY
+
+O
+
+OTRA ARQUITECTURA APROPIADA.
+
+Elegí según:
+
+- facilidad de despliegue;
+- estabilidad;
+- costo;
+- seguridad;
+- compatibilidad;
+- latencia;
+- facilidad para continuar desarrollando;
+- funcionamiento real a través de Internet.
+
+Para desarrollo inicial:
+
+PRIORIZAR FREE TIER / BAJO COSTO.
+
+Pero NO sacrificar completamente la arquitectura solamente para evitar cualquier costo futuro.
+
+==================================================
+SERVIDOR AUTORITATIVO
+==================================================
+
+El estado crítico NO debe depender de que cada cliente diga qué ocurrió.
+
+Debe existir autoridad compartida/servidor apropiada para:
+
+DINERO.
+INVENTARIO.
+TRANSACCIONES.
+PROPIEDADES.
+DAÑO.
+MUERTE/ESTADO DE SALUD.
+CRÍMENES.
+DETENCIONES.
+CONDENAS.
+PARTIDOS POLÍTICOS.
+READY.
+CAMPAÑAS.
+VOTOS.
+ELECCIONES.
+RESULTADOS.
+PRESIDENTE.
+JUEZ.
+BANCAS.
+CONGRESO.
+VOTACIONES.
+LEYES.
+ECONOMÍA.
+TIEMPO DE PARTIDA.
+PELOTA DE FÚTBOL.
+MARCADOR.
+
+NO confiar ciegamente en información crítica enviada por clientes.
+
+==================================================
+LOBBY ONLINE REAL
+==================================================
+
+Implementar flujo real:
+
+MAIN MENU
+
+→ CREAR PARTIDA ONLINE
+
+O
+
+→ UNIRSE A PARTIDA ONLINE.
+
+Puede utilizar:
+
+código de sala;
+ID;
+lista;
+invitación;
+
+lo que resulte más conveniente.
+
+Cuando alguien crea:
+
+se crea sesión/lobby.
+
+Otros jugadores pueden entrar POR INTERNET.
+
+==================================================
+LOBBY POLÍTICO
+==================================================
+
+Dentro del lobby:
+
+mostrar jugadores conectados.
+
+Los jugadores forman partidos.
+
+REGLA:
+
+CADA PARTIDO POLÍTICO TIENE EXACTAMENTE 2 JUGADORES.
+
+Slot 1:
+CANDIDATO A PRESIDENTE.
+
+Slot 2:
+CANDIDATO A JUEZ.
+
+Ambos jugadores deben ser jugadores online reales cuando se juegue una partida real.
+
+Bots/simulados solamente para desarrollo/testing.
+
+==================================================
+READY / START
+==================================================
+
+Partido incompleto:
+
+NO READY.
+
+Partido completo:
+
+PRESIDENTE + JUEZ.
+
+Puede ponerse READY.
+
+Cuando se cumplen condiciones:
+
+START.
+
+Todos los clientes reciben la misma transición.
+
+==================================================
+MUNDO ONLINE COMPARTIDO
+==================================================
+
+Después del lobby:
+
+TODOS ENTRAN AL MISMO MUNDO.
+
+Sincronizar:
+
+posición;
+movimiento;
+dirección;
+estado;
+interacciones;
+puertas;
+interiores;
+objetos relevantes.
+
+Jugador A debe ver a B.
+
+Jugador B debe ver a A.
+
+==================================================
+INTERIORES ONLINE
+==================================================
+
+Los interiores siguen siendo FÍSICOS.
+
+Jugador A entra al Congreso.
+
+Jugador B entra al Congreso.
+
+Ambos están en el mismo interior lógico.
+
+Se ven.
+
+Pueden caminar.
+
+Pueden interactuar.
+
+Pueden hablar.
+
+NO reemplazar interiores por menús.
+
+==================================================
+POLÍTICA ONLINE
+==================================================
+
+Toda la simulación política es COMPARTIDA.
+
+Existe UNA elección.
+
+Existe UN resultado.
+
+Existe UN Presidente.
+
+Existe UN Juez.
+
+Existe UNA composición del Congreso.
+
+Existe UN conjunto de leyes.
+
+Existe UNA economía compartida.
+
+Todos los clientes observan el mismo estado.
+
+==================================================
+CAMPAÑA ONLINE
+==================================================
+
+Después del lobby:
+
+CAMPAÑA.
+
+Los partidos compiten.
+
+Jugadores pueden:
+
+hacer actos;
+hablar;
+debatir;
+presentar propuestas;
+recorrer el mundo;
+buscar apoyo.
+
+Después:
+
+ELECCIÓN.
+
+El servidor/autoridad determina el resultado según las reglas.
+
+==================================================
+CONGRESO ONLINE
+==================================================
+
+Las bancas pueden ser simuladas.
+
+No necesitamos 100 jugadores.
+
+Ejemplo:
+
+Partido A:
+40 bancas.
+
+Partido B:
+35.
+
+Partido C:
+25.
+
+Los jugadores políticos humanos representan/dirigen su fuerza según las reglas del juego.
+
+Los proyectos y votaciones son compartidos.
+
+==================================================
+CHAT DE VOZ REAL
+==================================================
+
+QUIERO VOICE CHAT ONLINE REAL.
+
+NO SIMULADO.
+
+NO solamente icono de micrófono.
+
+NO solamente VoiceManager vacío.
+
+Necesito transmitir voz entre jugadores reales a través de Internet.
+
+Elegí la solución que consideres mejor.
+
+Podés usar un proveedor/SDK de voz existente.
+
+NO hace falta construir transporte de audio desde cero si existe una solución estable.
+
+==================================================
+PROXIMITY VOICE
+==================================================
+
+Canal principal:
+
+VOZ POR PROXIMIDAD.
+
+Objetivo inicial:
+
+aproximadamente 10 metros/unidades equivalentes.
+
+Configurable.
+
+CERCA
+→ volumen normal.
+
+SE ALEJA
+→ volumen disminuye.
+
+FUERA DE RANGO
+→ no se escucha.
+
+==================================================
+CONTEXTO DE INTERIORES
+==================================================
+
+La proximidad debe considerar:
+
+WORLD/ROOM/INTERIOR.
+
+No conectar accidentalmente personas que estén en escenas/interiores diferentes solamente porque sus coordenadas coinciden.
+
+==================================================
+CANALES ADICIONALES
+==================================================
+
+Preparar/implementar progresivamente:
+
+PROXIMITY.
+
+PARTY.
+
+CONGRESS.
+
+POLICE RADIO.
+
+FIRE RADIO.
+
+MEDICAL RADIO.
+
+==================================================
+PARTY VOICE
+==================================================
+
+Los dos miembros de cada partido:
+
+PRESIDENTE + JUEZ
+
+deben poder tener canal privado de partido cuando las reglas lo permitan.
+
+Esto permite:
+
+negociar;
+coordinar campaña;
+hablar a distancia.
+
+==================================================
+CONGRESO + VOZ
+==================================================
+
+Quiero eventualmente poder:
+
+ENTRAR FÍSICAMENTE AL CONGRESO
+→ INICIAR SESIÓN
+→ JUGADORES HABLAN
+→ DEBATEN
+→ NEGOCIAN
+→ VOTAN.
+
+La voz es parte del gameplay político.
+
+==================================================
+JUSTICIA + VOZ
+==================================================
+
+También:
+
+POLICÍA DETIENE JUGADOR
+→ TRIBUNAL
+→ ACUSADO
+→ JUEZ HUMANO
+→ AUDIENCIA
+→ HABLAN POR VOZ
+→ JUEZ DECIDE
+→ LIBERTAD O CÁRCEL.
+
+==================================================
+CONTROLES DE VOZ
+==================================================
+
+Implementar:
+
+MIC ON/OFF.
+
+MUTE.
+
+VOLUMEN.
+
+INDICADOR DE QUIÉN HABLA.
+
+PUSH TO TALK si resulta conveniente.
+
+Permiso de micrófono correctamente gestionado.
+
+Si alguien no da permiso:
+
+puede seguir jugando sin voz.
+
+==================================================
+ARMAS ONLINE
+==================================================
+
+Las armas deben funcionar multiplayer.
+
+Jugador A:
+
+equipa arma
+→ apunta
+→ dispara.
+
+Jugador B:
+
+recibe/ve el evento.
+
+Autoridad valida impacto/daño.
+
+HealthState se sincroniza.
+
+CrimeSystem registra el evento cuando corresponda.
+
+==================================================
+FÚTBOL ONLINE
+==================================================
+
+La Cancha F5 debe ser multiplayer real.
+
+Pelota compartida/autoritativa.
+
+Todos ven la misma posición razonablemente.
+
+Jugador A patea.
+
+Jugador B ve el mismo movimiento.
+
+Gol:
+
+marcador cambia para todos.
+
+==================================================
+ECONOMÍA ONLINE
+==================================================
+
+Economía compartida.
+
+Ejemplo:
+
+Jugador compra producto.
+
+Servidor valida:
+
+precio;
+stock;
+dinero.
+
+Después:
+
+resta dinero;
+reduce stock;
+transfiere producto;
+calcula impuesto;
+actualiza recaudación.
+
+Todos los estados relevantes quedan sincronizados.
+
+==================================================
+PERSISTENCIA
+==================================================
+
+Investigar e implementar una solución razonable para persistir estado cuando corresponda.
+
+Separar conceptualmente:
+
+ACCOUNT/PLAYER DATA
+
+de
+
+MATCH/WORLD STATE.
+
+No necesitamos infraestructura gigantesca prematuramente.
+
+Pero no diseñar todo suponiendo que cerrar servidor puede destruir para siempre información que debería persistir.
+
+==================================================
+SEGURIDAD
+==================================================
+
+NO subir secretos a GitHub.
+
+NO hardcodear:
+
+API keys;
+tokens;
+passwords;
+secret keys;
+connection secrets.
+
+Usar:
+
+variables de entorno;
+secret management;
+configuración apropiada.
+
+==================================================
+DESPLIEGUE
+==================================================
+
+NO QUIERO QUE EL RESULTADO SEA SOLAMENTE:
+
+"el servidor puede desplegarse".
+
+QUIERO QUE, SI LAS HERRAMIENTAS Y CUENTAS DISPONIBLES LO PERMITEN:
+
+LO DESPLIEGUES.
+
+Crear el entorno online necesario.
+
+Después probar conectividad real.
+
+==================================================
+TEST OBLIGATORIO
+==================================================
+
+EL MILESTONE DE MULTIPLAYER NO SE CONSIDERA TERMINADO HASTA PROBAR COMO MÍNIMO:
+
+CLIENTE A
++
+CLIENTE B.
+
+Idealmente desde procesos independientes.
+
+Y cuando sea posible:
+
+A TRAVÉS DE LA INFRAESTRUCTURA ONLINE REAL.
+
+Probar:
+
+A conecta.
+
+B conecta.
+
+A ve B.
+
+B ve A.
+
+A se mueve.
+
+B ve movimiento.
+
+B se mueve.
+
+A ve movimiento.
+
+Ambos entran al mismo interior.
+
+Ambos ven mismo estado político.
+
+==================================================
+TEST DE VOZ
+==================================================
+
+Probar técnicamente la integración.
+
+Si el entorno de automatización no permite escuchar físicamente dos micrófonos:
+
+NO INVENTAR RESULTADO.
+
+Dejar implementación funcional y darme instrucciones EXACTAS para:
+
+PC A
++
+PC B
+
+y verificar voz.
+
+==================================================
+OBJETIVO CONCRETO
+==================================================
+
+QUIERO LLEGAR A PODER DECIRLE A UN AMIGO:
+
+"INSTALÁ/ABRÍ ARGENTUM 2D."
+
+YO CREO UNA PARTIDA.
+
+LE PASO EL CÓDIGO/INVITACIÓN.
+
+ÉL ENTRA DESDE SU CASA.
+
+NOS VEMOS EN EL LOBBY.
+
+HABLAMOS.
+
+CREAMOS PARTIDOS.
+
+EMPIEZA LA PARTIDA.
+
+APARECEMOS EN EL MISMO MUNDO.
+
+NOS VEMOS CAMINAR.
+
+NOS ESCUCHAMOS POR PROXIMIDAD.
+
+HACEMOS CAMPAÑA.
+
+VOTAMOS.
+
+UNO GANA.
+
+TODOS VEMOS EL MISMO RESULTADO.
+
+DESPUÉS SEGUIMOS JUGANDO EN EL MISMO MUNDO.
+
+==================================================
+NO BLOQUEAR TODO POR LA INFRAESTRUCTURA
+==================================================
+
+Si una solución tarda demasiado o falla repetidamente:
+
+NO pierdas toda la ejecución.
+
+Diagnosticar.
+
+Intentar solución razonable.
+
+Si no funciona:
+
+cambiar de estrategia/proveedor/arquitectura.
+
+NO repetir el mismo error 30 veces.
+
+==================================================
+SI NECESITÁS ALGO DE MÍ
+==================================================
+
+Preguntarme SOLAMENTE cuando realmente sea inevitable.
+
+Ejemplos:
+
+"Necesito que inicies sesión en X."
+
+"Necesito que autorices X."
+
+"Este proveedor requiere agregar una tarjeta."
+
+"Necesito que habilites el micrófono."
+
+Cuando ocurra:
+
+DECIME EXACTAMENTE:
+
+1. QUÉ ABRIR.
+2. DÓNDE ENTRAR.
+3. QUÉ TOCAR.
+4. QUÉ NO COMPARTIR CONMIGO SI ES SECRETO.
+5. CÓMO SABER QUE QUEDÓ LISTO.
+
+Y después continuar.
+
+==================================================
+CONTINUAR_AQUI.md
+==================================================
+
+ACTUALIZAR DURANTE EL TRABAJO, NO SOLAMENTE AL FINAL.
+
+Agregar:
+
+## ONLINE MULTIPLAYER
+
+Tecnología:
+Versión:
+Arquitectura:
+Estado:
+Máximo jugadores configurado:
+Cómo crear partida:
+Cómo unirse:
+Código/invitación:
+Qué está sincronizado:
+Qué falta:
+
+## SERVIDOR / HOSTING
+
+Proveedor:
+Región:
+Servicio:
+Deployment:
+Endpoint si corresponde:
+Estado:
+Free tier/costo:
+Cómo desplegar nuevamente:
+Cómo ver logs:
+
+## VOICE
+
+Proveedor/tecnología:
+Estado:
+Proximity:
+Party:
+Congress:
+Police:
+Fire:
+Medical:
+Mute:
+Mic:
+PTT:
+Qué fue probado:
+Qué falta probar:
+
+## TEST MULTIPLAYER
+
+Clientes probados:
+Método:
+Resultado:
+Errores:
+
+## CREDENCIALES NECESARIAS
+
+NO escribir secretos.
+
+Solamente indicar nombres de variables/configuración requerida.
+
+## PRIMERA ACCIÓN SIGUIENTE
+
+Acción exacta.
+
+==================================================
+GITHUB
+==================================================
+
+Crear checkpoint cuando:
+
+NETWORK FOUNDATION FUNCIONA.
+
+ONLINE CONNECTION FUNCIONA.
+
+VOICE FUNCIONA.
+
+No hacer commit por cada cambio mínimo.
+
+==================================================
+PRIORIDAD AHORA
+==================================================
+
+RETOMÁ PRIMERO EL ESTADO REAL DEL PROYECTO ACTUAL.
+
+NO BORRES LOS 16+ MINUTOS DE TRABAJO PREVIO.
+
+INSPECCIONÁ RÁPIDAMENTE.
+
+DESPUÉS:
+
+1. HACER JUGABLE LO EXISTENTE.
+
+2. IMPLEMENTAR NETWORK FOUNDATION.
+
+3. CREAR/UNIRSE A PARTIDA ONLINE.
+
+4. LOBBY ONLINE.
+
+5. SINCRONIZAR DOS JUGADORES.
+
+6. FORMAR PARTIDOS DE EXACTAMENTE 2:
+   PRESIDENTE + JUEZ.
+
+7. INTEGRAR CHAT DE VOZ REAL.
+
+8. PROXIMITY VOICE.
+
+9. MUNDO COMPARTIDO.
+
+10. CAMPAÑA.
+
+11. ELECCIONES.
+
+12. PRESIDENTE/JUEZ.
+
+13. CONGRESO/LEYES.
+
+14. ECONOMÍA.
+
+15. INTERIORES MULTIJUGADOR.
+
+16. ARMAS/CRIMEN/JUSTICIA.
+
+17. FÚTBOL MULTIJUGADOR.
+
+==================================================
+REGLA ABSOLUTA
+==================================================
+
+NO QUIERO SOLAMENTE PREPARAR ARGENTUM PARA SER ONLINE.
+
+QUIERO CONSTRUIR ARGENTUM COMO JUEGO ONLINE.
+
+HACÉ LO QUE TENGAS QUE HACER TÉCNICAMENTE PARA CONSEGUIRLO.
+
+INVESTIGÁ.
+
+ELEGÍ STACK.
+
+CONFIGURÁ NETWORKING.
+
+CREÁ SERVICIOS.
+
+DESPLEGÁ.
+
+ALOJÁ.
+
+CONECTÁ.
+
+SINCRONIZÁ.
+
+IMPLEMENTÁ VOZ.
+
+PROBÁ DOS CLIENTES.
+
+CORREGÍ.
+
+SEGUÍ.
+
+NO ME PREGUNTES DECISIONES TÉCNICAS QUE PUEDAS RESOLVER VOS.
+
+SOLAMENTE DETENETE SI NECESITÁS DE MÍ UNA AUTORIZACIÓN, LOGIN, CREDENCIAL O PAGO QUE REALMENTE NO PUEDAS RESOLVER.
+
+OBJETIVO:
+
+ARGENTUM 2D ONLINE REAL.
+
+EMPEZÁ AHORA.

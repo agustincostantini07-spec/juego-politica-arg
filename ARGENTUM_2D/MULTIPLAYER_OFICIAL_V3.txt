@@ -1,0 +1,997 @@
+CORRECCIÓN CRÍTICA — ARGENTUM 2D DEBE SER MULTIJUGADOR REAL + CHAT DE VOZ
+
+ESTA INSTRUCCIÓN REEMPLAZA CUALQUIER PARTE ANTERIOR QUE DIGA QUE EL MULTIPLAYER ES SOLAMENTE "FUTURO", "MULTIPLAYER-READY" O QUE DEBE QUEDAR PARA MÁS ADELANTE.
+
+QUIERO QUE ARGENTUM 2D SEA UN JUEGO MULTIJUGADOR REAL.
+
+NO QUIERO QUE LA VERSIÓN PRINCIPAL SEA SINGLEPLAYER.
+
+LOS BOTS Y JUGADORES SIMULADOS PUEDEN EXISTIR PARA TESTING Y PARA COMPLETAR PRUEBAS,
+
+PERO EL PRODUCTO QUE ESTAMOS CONSTRUYENDO ES:
+
+ARGENTUM 2D MULTIJUGADOR ONLINE.
+
+==================================================
+MULTIPLAYER OBLIGATORIO
+==================================================
+
+IMPLEMENTÁ MULTIPLAYER REAL.
+
+Necesito progresivamente:
+
+CREAR PARTIDA
+→ SALA DE ESPERA
+→ JUGADORES REALES SE CONECTAN
+→ FORMAN PARTIDOS
+→ READY
+→ EMPIEZA PARTIDA
+→ TODOS ENTRAN AL MISMO MUNDO
+→ ESTADO COMPARTIDO
+→ CAMPAÑA
+→ ELECCIONES
+→ GOBIERNO
+→ CONGRESO
+→ LEYES
+→ ECONOMÍA
+→ MUNDO FÍSICO
+→ INTERACCIONES.
+
+Los jugadores deben poder verse entre sí físicamente en el mundo 2D.
+
+Sincronizar correctamente como mínimo:
+
+posición;
+movimiento;
+dirección;
+estado del jugador;
+interacciones;
+interiores;
+inventario cuando corresponda;
+dinero/transacciones relevantes;
+objetos importantes;
+armas;
+disparos/daño;
+pelota;
+partidos de fútbol;
+roles;
+partidos políticos;
+elecciones;
+Presidente;
+Juez;
+Congreso;
+leyes;
+economía;
+crímenes;
+detenciones;
+cárcel.
+
+==================================================
+ARQUITECTURA AUTORITATIVA
+==================================================
+
+NO confiar decisiones importantes al cliente.
+
+El estado crítico debe tener una autoridad apropiada.
+
+Especialmente:
+
+DINERO.
+COMPRAS.
+INVENTARIO.
+DAÑO.
+CRIMEN.
+ELECCIONES.
+VOTOS.
+RESULTADOS.
+CARGOS.
+BANCAS.
+LEYES.
+CONDENAS.
+PROPIEDADES.
+
+NO permitir conceptualmente:
+
+cliente dice "tengo $1.000.000"
+→ servidor acepta.
+
+O:
+
+cliente dice "gané elección"
+→ sistema acepta.
+
+Las operaciones críticas deben validarse.
+
+Elegí una arquitectura adecuada para el tamaño de ARGENTUM.
+
+==================================================
+TENÉS LIBERTAD TÉCNICA
+==================================================
+
+TE AUTORIZO A DECIDIR LA TECNOLOGÍA DE MULTIPLAYER.
+
+Elegí lo que realmente funcione mejor con el proyecto actual.
+
+Podés utilizar, si está disponible y conviene:
+
+Unity Multiplayer / Netcode;
+Relay;
+Lobby;
+dedicated server;
+host/client;
+servicios cloud;
+backend propio;
+WebSockets;
+servicios externos;
+Vercel para componentes web/backend apropiados;
+otra infraestructura técnicamente adecuada.
+
+NO elijas una tecnología porque yo la nombré.
+
+INVESTIGÁ RÁPIDAMENTE LAS OPCIONES REALES DISPONIBLES Y ELEGÍ UNA.
+
+Criterios:
+
+funciona;
+es mantenible;
+permite continuar desarrollando;
+latencia razonable;
+seguridad razonable;
+costos iniciales bajos;
+compatible con ARGENTUM;
+compatible con chat de voz;
+no nos encierra innecesariamente.
+
+==================================================
+HOSTING
+==================================================
+
+ALOJÁ LOS COMPONENTES DONDE CONSIDERES MÁS CONVENIENTE.
+
+TENÉS AUTORIZACIÓN PARA ELEGIR LA INFRAESTRUCTURA.
+
+NO necesito decidir yo previamente:
+
+"servidor A o servidor B".
+
+Analizá lo disponible y resolvelo.
+
+Preferí inicialmente:
+
+GRATIS
+O
+FREE TIER
+O
+MUY BAJO COSTO
+
+si satisface las necesidades de desarrollo.
+
+Si una infraestructura requiere un pago que no podés realizar automáticamente:
+
+NO BLOQUEES TODO EL DESARROLLO.
+
+Implementá una alternativa de desarrollo/local/free tier y documentá la opción recomendada para producción.
+
+==================================================
+NO EXPONER SECRETOS
+==================================================
+
+NUNCA:
+
+hardcodear passwords;
+API keys;
+tokens;
+secret keys;
+credenciales.
+
+Usar:
+
+variables de entorno;
+secret management;
+configuración segura apropiada.
+
+NO subir secretos a GitHub.
+
+==================================================
+CHAT DE VOZ OBLIGATORIO
+==================================================
+
+QUIERO CHAT DE VOZ REAL ENTRE LOS JUGADORES.
+
+NO solamente chat de texto.
+
+CHAT DE VOZ.
+
+Implementalo de la forma que consideres técnicamente más adecuada.
+
+TENÉS LIBERTAD PARA ELEGIR:
+
+servicio;
+SDK;
+backend;
+hosting;
+arquitectura.
+
+Si existe una solución de voz confiable que evita construir WebRTC/audio networking desde cero:
+
+PREFERIR ESO si realmente conviene.
+
+NO reinventar infraestructura de voz compleja innecesariamente.
+
+==================================================
+CHAT DE VOZ DE PROXIMIDAD
+==================================================
+
+LA VOZ PRINCIPAL DEL MUNDO DEBE SER POR PROXIMIDAD.
+
+Conceptualmente:
+
+JUGADOR A ESTÁ CERCA DE JUGADOR B
+→ SE ESCUCHAN.
+
+SE ALEJAN
+→ VOLUMEN DISMINUYE.
+
+SUPERAN DISTANCIA MÁXIMA
+→ DEJAN DE ESCUCHARSE.
+
+Objetivo inicial aproximado:
+
+10 METROS DE RADIO.
+
+Pero dejarlo CONFIGURABLE.
+
+Ejemplo:
+
+voiceProximityRange = 10.
+
+Adaptar unidades correctamente al mundo 2D.
+
+==================================================
+VOZ ESPACIAL 2D
+==================================================
+
+Aunque el juego sea 2D:
+
+la posición relativa puede influir en audio si la tecnología lo permite de forma razonable.
+
+Como mínimo:
+
+DISTANCIA
+→ VOLUMEN.
+
+Si el audio espacial izquierda/derecha mejora el resultado y es estable:
+
+implementarlo.
+
+NO sacrificar estabilidad por efectos innecesarios.
+
+==================================================
+INTERIORES + VOZ
+==================================================
+
+MUY IMPORTANTE.
+
+La voz debe respetar razonablemente el contexto físico.
+
+Ejemplo:
+
+Jugador A está dentro del Congreso.
+
+Jugador B está afuera a varias calles.
+
+NO deberían escucharse solamente porque las coordenadas internas coinciden accidentalmente.
+
+El sistema debe considerar:
+
+WORLD/SCENE/INTERIOR/ROOM CONTEXT
+
+además de distancia.
+
+Jugadores dentro de un mismo interior pueden escucharse por proximidad.
+
+==================================================
+CANALES DE VOZ
+==================================================
+
+Además de proximidad, preparar canales específicos.
+
+Necesito progresivamente:
+
+PROXIMITY.
+
+PARTY.
+
+CONGRESS.
+
+POLICE.
+
+FIRE_SERVICE.
+
+MEDICAL.
+
+Opcional posteriormente:
+
+PRESIDENTIAL / GOVERNMENT.
+
+==================================================
+PARTY VOICE
+==================================================
+
+Cada partido político tiene exactamente:
+
+2 jugadores.
+
+1 PRESIDENTE/CANDIDATO.
+1 JUEZ/CANDIDATO.
+
+Durante campaña quiero que puedan comunicarse mediante:
+
+PARTY VOICE.
+
+Este canal puede permitir que ambos miembros del partido hablen aunque estén físicamente separados.
+
+Debe diferenciarse de proximity chat.
+
+==================================================
+CONGRESS VOICE
+==================================================
+
+Cuando corresponde una sesión:
+
+crear canal/contexto:
+
+CONGRESS.
+
+Los participantes habilitados pueden hablar según reglas.
+
+Preparar arquitectura para:
+
+micrófono;
+turno de palabra;
+mute;
+autoridad/moderación si posteriormente se necesita.
+
+No hace falta construir un sistema parlamentario de voz gigantesco inmediatamente.
+
+Pero debe existir una base funcional.
+
+==================================================
+POLICE VOICE
+==================================================
+
+Rol POLICE:
+
+puede tener canal/radio policial.
+
+Así policías pueden comunicarse a distancia.
+
+==================================================
+FIRE SERVICE VOICE
+==================================================
+
+Rol FIRE_SERVICE:
+
+radio de bomberos.
+
+==================================================
+MEDICAL VOICE
+==================================================
+
+Preparar radio/canal médico si corresponde.
+
+==================================================
+CONTROLES DE VOZ
+==================================================
+
+Implementar UI/configuración básica:
+
+MIC ON/OFF.
+
+MUTE jugador.
+
+VOLUMEN de voz.
+
+Indicador visual cuando alguien habla.
+
+Estado de micrófono.
+
+Si conviene:
+
+PUSH TO TALK.
+
+Elegir una tecla razonable y hacerla configurable.
+
+==================================================
+PRIVACIDAD / PERMISOS
+==================================================
+
+Solicitar acceso al micrófono correctamente cuando la plataforma lo requiera.
+
+Si usuario no concede permiso:
+
+EL JUEGO DEBE SEGUIR FUNCIONANDO.
+
+Simplemente:
+
+VOICE DISABLED.
+
+No romper la partida.
+
+==================================================
+LOBBY + VOZ
+==================================================
+
+QUIERO VOZ TAMBIÉN EN LA SALA DE ESPERA SI ES POSIBLE.
+
+Los jugadores entran al lobby.
+
+Pueden hablar.
+
+Forman partidos.
+
+Cada partido:
+
+EXACTAMENTE 2 JUGADORES.
+
+Slots:
+
+CANDIDATO A PRESIDENTE.
+CANDIDATO A JUEZ.
+
+Después READY.
+
+==================================================
+FLUJO MULTIJUGADOR COMPLETO
+==================================================
+
+OBJETIVO REAL:
+
+JUGADOR 1 ABRE ARGENTUM.
+
+→ CREAR PARTIDA.
+
+JUGADOR 2/3/4/...:
+
+→ UNIRSE.
+
+→ TODOS APARECEN EN LOBBY.
+
+→ PUEDEN HABLAR POR VOZ.
+
+→ CREAN PARTIDOS.
+
+PARTIDO A:
+Jugador1 Presidente.
+Jugador2 Juez.
+
+PARTIDO B:
+Jugador3 Presidente.
+Jugador4 Juez.
+
+→ READY.
+
+→ START.
+
+→ CARGA MUNDO COMPARTIDO.
+
+→ TODOS VEN A LOS DEMÁS.
+
+→ PUEDEN HABLAR POR PROXIMIDAD.
+
+→ SE SEPARAN.
+
+→ DEJAN DE ESCUCHARSE.
+
+→ PARTY VOICE SIGUE FUNCIONANDO ENTRE LOS DOS MIEMBROS SI ESTÁ ACTIVADO.
+
+→ CAMPAÑA.
+
+→ ELECCIÓN COMPARTIDA.
+
+→ MISMO RESULTADO PARA TODOS.
+
+→ MISMO PRESIDENTE PARA TODOS.
+
+→ MISMO JUEZ PARA TODOS.
+
+→ MISMA COMPOSICIÓN DEL CONGRESO.
+
+→ MISMAS LEYES.
+
+→ MISMA ECONOMÍA.
+
+→ MISMO MUNDO.
+
+==================================================
+SINCRONIZACIÓN POLÍTICA
+==================================================
+
+ESTO ES CRÍTICO.
+
+NO puede ocurrir:
+
+Jugador A ve Presidente X.
+
+Jugador B ve Presidente Y.
+
+Debe existir UNA FUENTE AUTORITATIVA DEL ESTADO POLÍTICO.
+
+Sincronizar:
+
+partidos;
+miembros;
+candidatos;
+campaña;
+encuestas públicas;
+elección;
+votos;
+resultado;
+Presidente;
+Juez;
+bancas;
+proyectos;
+votaciones;
+leyes;
+mandatos.
+
+==================================================
+SINCRONIZACIÓN FÍSICA
+==================================================
+
+Los jugadores deben verse mover razonablemente.
+
+No necesito networking competitivo de shooter AAA.
+
+Pero debe sentirse estable.
+
+Sincronizar/interpolar apropiadamente:
+
+posición;
+dirección;
+animación si existe;
+acciones importantes.
+
+==================================================
+ARMAS EN MULTIPLAYER
+==================================================
+
+El sistema de armas también debe ser multijugador.
+
+Ejemplo:
+
+Jugador A dispara.
+
+Jugador B ve/recibe evento.
+
+Sistema autorizado determina impacto.
+
+HealthSystem cambia.
+
+Los demás reciben estado correcto.
+
+CrimeSystem puede registrar el hecho.
+
+NO confiar exclusivamente en el cliente atacante para decidir daño.
+
+==================================================
+FÚTBOL MULTIJUGADOR
+==================================================
+
+LA CANCHA F5 TAMBIÉN DEBE SER MULTIJUGADOR.
+
+La pelota debe ser compartida.
+
+NO:
+
+Jugador A ve pelota en X.
+
+Jugador B la ve en Y.
+
+Debe existir autoridad de pelota apropiada.
+
+Jugadores pueden:
+
+correr;
+pasar;
+patear;
+rematar;
+hacer goles.
+
+Marcador compartido.
+
+==================================================
+INTERIORES MULTIJUGADOR
+==================================================
+
+Dos jugadores pueden entrar al mismo edificio.
+
+Deben encontrarse físicamente dentro.
+
+Ejemplo:
+
+Jugador A entra al Congreso.
+
+Jugador B entra al Congreso.
+
+AMBOS:
+
+aparecen dentro del mismo espacio lógico.
+
+Se ven.
+
+Pueden hablar por proximidad.
+
+Pueden interactuar.
+
+==================================================
+JUSTICIA MULTIJUGADOR
+==================================================
+
+Esto es MUY importante para ARGENTUM.
+
+Ejemplo:
+
+Jugador A comete delito.
+
+Jugador B es policía.
+
+Jugador B detiene a A.
+
+Jugador C es Juez.
+
+Jugador A es llevado al Tribunal.
+
+Jugador C entra físicamente al Tribunal.
+
+Puede existir audiencia.
+
+Los jugadores pueden HABLAR POR VOZ.
+
+Juez toma decisión.
+
+Si condena:
+
+Jugador A va a cárcel.
+
+ESTO DEBE PODER CONVERTIRSE EN UNA DE LAS EXPERIENCIAS CENTRALES DEL JUEGO.
+
+==================================================
+POLÍTICA + VOZ
+==================================================
+
+La voz no es un agregado secundario.
+
+ES PARTE DEL GAMEPLAY POLÍTICO.
+
+Quiero poder tener:
+
+CAMPAÑAS CON JUGADORES HABLANDO.
+
+DEBATES.
+
+NEGOCIACIONES.
+
+CONVERSACIONES PRIVADAS DE PARTIDO.
+
+SESIONES DEL CONGRESO.
+
+AUDIENCIAS JUDICIALES.
+
+POLICÍAS POR RADIO.
+
+BOMBEROS POR RADIO.
+
+CONVERSACIONES NORMALES EN LA CALLE.
+
+==================================================
+PRIORIDAD ACTUALIZADA
+==================================================
+
+NO quiero que ahora abandones todo lo construido y pases 3 horas configurando servidores.
+
+Primero:
+
+INSPECCIONÁ EL ESTADO ACTUAL.
+
+CONSERVÁ LO QUE FUNCIONA.
+
+Después incorporá multiplayer de forma progresiva.
+
+PRIORIDAD:
+
+1. ESTADO ACTUAL JUGABLE.
+
+2. NETWORK FOUNDATION.
+
+3. CREAR/UNIRSE A PARTIDA.
+
+4. LOBBY MULTIJUGADOR.
+
+5. JUGADORES SINCRONIZADOS.
+
+6. PARTIDOS POLÍTICOS DE 2 PERSONAS.
+
+7. VOZ BÁSICA FUNCIONAL.
+
+8. PROXIMITY VOICE.
+
+9. CAMPAÑA.
+
+10. ELECCIONES AUTORITATIVAS.
+
+11. PRESIDENTE/JUEZ.
+
+12. CONGRESO/LEYES.
+
+13. MUNDO FÍSICO MULTIJUGADOR.
+
+14. INTERIORES MULTIJUGADOR.
+
+15. ECONOMÍA.
+
+16. ARMAS.
+
+17. CRIMEN/JUSTICIA.
+
+18. FÚTBOL MULTIJUGADOR.
+
+==================================================
+PRIMER TEST MULTIPLAYER OBLIGATORIO
+==================================================
+
+Tan pronto como sea razonable:
+
+PROBAR DOS CLIENTES.
+
+NO considerar multiplayer terminado porque compila.
+
+Necesito probar:
+
+CLIENTE A
++
+CLIENTE B.
+
+A se conecta.
+
+B se conecta.
+
+A ve a B.
+
+B ve a A.
+
+A se mueve.
+
+B ve movimiento.
+
+B se mueve.
+
+A ve movimiento.
+
+Ambos tienen mismo GameState.
+
+==================================================
+PRIMER TEST DE VOZ
+==================================================
+
+Después:
+
+CLIENTE A
++
+CLIENTE B.
+
+Micrófono A activo.
+
+B recibe voz.
+
+Probar:
+
+CERCA
+→ SE ESCUCHA.
+
+LEJOS
+→ DISMINUYE/SE CORTA.
+
+MUTE
+→ FUNCIONA.
+
+MIC OFF
+→ FUNCIONA.
+
+Si no podés realizar una prueba acústica automática real:
+
+implementá toda la integración posible y dejá instrucciones EXACTAS para una prueba humana con dos clientes.
+
+==================================================
+NO INVENTAR QUE LA VOZ FUNCIONA
+==================================================
+
+MUY IMPORTANTE:
+
+NO marques:
+
+"VOICE CHAT TERMINADO"
+
+solamente porque:
+
+SDK instalado;
+VoiceManager creado;
+botón micrófono creado.
+
+Debe existir conexión real al sistema de voz.
+
+Si requiere credenciales/configuración externa que no podés completar:
+
+documentá exactamente:
+
+QUÉ SERVICIO.
+QUÉ CUENTA.
+QUÉ DATO FALTA.
+DÓNDE SE COLOCA.
+QUÉ YA ESTÁ IMPLEMENTADO.
+QUÉ FALTA PROBAR.
+
+Y SEGUÍ AVANZANDO EN OTRAS PARTES.
+
+==================================================
+HOSTING / DEPLOYMENT
+==================================================
+
+TENÉS LIBERTAD PARA:
+
+elegir proveedor;
+crear configuración;
+preparar servidor;
+preparar backend;
+desplegar componentes cuando las herramientas/autorizaciones disponibles lo permitan.
+
+NO desplegar infraestructura innecesaria.
+
+Pero si necesitamos un servicio real para que dos jugadores puedan conectarse desde computadoras distintas:
+
+IMPLEMENTALO.
+
+==================================================
+GITHUB
+==================================================
+
+Guardar configuración y código.
+
+NO guardar secretos.
+
+Documentar infraestructura.
+
+README debe explicar:
+
+arquitectura multiplayer;
+cómo levantar servidor si existe;
+cómo crear partida;
+cómo conectarse;
+cómo configurar voz;
+variables de entorno necesarias.
+
+==================================================
+CONTINUAR_AQUI.md
+==================================================
+
+AGREGAR OBLIGATORIAMENTE:
+
+## MULTIPLAYER
+
+Tecnología elegida:
+Arquitectura:
+Host/servidor:
+Lobby:
+Relay si existe:
+Estado de sincronización:
+Número de clientes probado:
+Problemas:
+
+## HOSTING
+
+Proveedor:
+Qué está alojado:
+URL/endpoint si corresponde:
+Estado:
+Costos/free tier:
+Variables necesarias:
+
+## VOICE CHAT
+
+Tecnología/servicio:
+SDK:
+Configuración:
+Proximity:
+Rango:
+Party channel:
+Congress channel:
+Police channel:
+Fire channel:
+Medical channel:
+Push-to-talk:
+Mute:
+Mic on/off:
+Número de clientes probado:
+Problemas:
+
+## SEGURIDAD
+
+Qué es server-authoritative:
+Qué sigue siendo client-side:
+Secret management:
+Problemas conocidos:
+
+==================================================
+REGLA FINAL
+==================================================
+
+ARGENTUM 2D NO ES "UN JUEGO QUE ALGÚN DÍA TENDRÁ MULTIPLAYER".
+
+ARGENTUM 2D ES:
+
+UN JUEGO MULTIJUGADOR ONLINE.
+
+EL MULTIPLAYER ES PARTE DEL PRODUCTO.
+
+EL CHAT DE VOZ ES PARTE DEL PRODUCTO.
+
+QUIERO:
+
+JUGADORES REALES
++
+LOBBY
++
+PARTIDOS POLÍTICOS
++
+2 PERSONAS POR PARTIDO
++
+PRESIDENTE
++
+JUEZ
++
+CAMPAÑAS
++
+ELECCIONES
++
+CONGRESO
++
+LEYES
++
+MUNDO FÍSICO
++
+INTERIORES
++
+ARMAS
++
+CRIMEN
++
+JUSTICIA
++
+FÚTBOL
+
+TODO EVENTUALMENTE COMPARTIDO EN LA MISMA PARTIDA.
+
+Y LA VOZ DEBE PERMITIR QUE LA POLÍTICA OCURRA ENTRE PERSONAS REALES:
+
+HABLAR.
+NEGOCIAR.
+DEBATIR.
+HACER CAMPAÑA.
+JUZGAR.
+ORGANIZARSE.
+
+TENÉS LIBERTAD PARA DECIDIR CÓMO IMPLEMENTARLO Y DÓNDE ALOJARLO.
+
+NO ME PREGUNTES QUÉ PROVEEDOR QUIERO SALVO QUE EXISTA UNA DECISIÓN DE PAGO/CREDENCIALES QUE REALMENTE REQUIERA MI INTERVENCIÓN.
+
+ELEGÍ LA SOLUCIÓN TÉCNICA.
+
+IMPLEMENTALA.
+
+INTEGRALA.
+
+PROBALA.
+
+DOCUMENTALA.
+
+Y DESPUÉS SEGUÍ CONSTRUYENDO ARGENTUM 2D.

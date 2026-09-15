@@ -1,0 +1,880 @@
+PERFECTO. TOMO ESTE CHECKPOINT COMO EL NUEVO PUNTO DE PARTIDA DE ARGENTUM 2D.
+
+NO REHAGAS LO QUE YA FUNCIONA.
+
+CONSERVÁ TODO LO QUE ACABÁS DE REPORTAR:
+
+- versión jugable recuperable;
+- 37/37 pruebas aprobadas;
+- lobby;
+- candidaturas;
+- inicio;
+- mundo compartido;
+- elecciones;
+- leyes;
+- compras;
+- combate;
+- justicia;
+- fútbol;
+- Node.js 24 + WebSocket;
+- servidor dedicado autoritativo;
+- sincronización existente;
+- hasta 12 actores / 6 partidos;
+- 4 clientes WebSocket concurrentes probados;
+- política electoral y legislativa existente;
+- Git/checkpoint;
+- CONTINUAR_AQUI.md.
+
+AHORA SEGUÍ TRABAJANDO.
+
+NO ME DES OTRO INFORME AHORA.
+NO TE DETENGAS A EXPLICARME EL PLAN.
+NO REINICIES EL PROYECTO.
+NO REEMPLACES SISTEMAS FUNCIONALES SIN NECESIDAD.
+
+==================================================
+PRIORIDAD 1 — PASAR DE LOCAL A ONLINE REAL
+==================================================
+
+El mayor faltante actual es:
+
+SERVIDOR PÚBLICO REAL.
+
+Actualmente informaste:
+
+"Servidor ejecutable local verificado. Sin servidor público publicado."
+
+ESO AHORA ES PRIORIDAD.
+
+QUIERO QUE ARGENTUM 2D PUEDA JUGARSE DESDE DOS CASAS/REDES DIFERENTES POR INTERNET.
+
+HACÉ LO QUE TENGAS QUE HACER.
+
+Elegí vos:
+
+hosting;
+VPS;
+cloud;
+servicio;
+relay;
+WebSocket seguro;
+reverse proxy;
+TLS;
+dominio/subdominio si realmente hace falta;
+deploy;
+configuración.
+
+Preferí inicialmente una solución gratuita/free-tier/barata que realmente funcione.
+
+NO ME PREGUNTES QUÉ PROVEEDOR QUIERO.
+
+ELEGILO VOS.
+
+Si las herramientas disponibles te permiten crear y desplegar el servidor:
+
+HACELO.
+
+Si existe un bloqueo inevitable de:
+
+LOGIN
+CUENTA
+PAGO
+TARJETA
+CREDENCIAL
+AUTORIZACIÓN
+
+recién ahí pedime intervención y decime exactamente qué tengo que hacer.
+
+==================================================
+OBJETIVO ONLINE
+==================================================
+
+QUIERO:
+
+PC A / CASA A
+→ ARGENTUM 2D
+→ INTERNET.
+
+PC B / CASA B
+→ ARGENTUM 2D
+→ INTERNET.
+
+AMBOS:
+
+→ SERVIDOR DE ARGENTUM
+→ MISMO LOBBY
+→ MISMA PARTIDA
+→ MISMO MUNDO
+→ MISMOS JUGADORES
+→ MISMA POLÍTICA
+→ MISMA ECONOMÍA.
+
+NO considerar "online terminado" solamente porque localhost funciona.
+
+==================================================
+PRIORIDAD 2 — CHAT DE VOZ REAL
+==================================================
+
+Informaste:
+
+"CHAT DE VOZ: integrado; escucha real y relay TURN pendientes."
+
+TERMINALO.
+
+QUIERO VOZ REAL ENTRE DOS COMPUTADORAS A TRAVÉS DE INTERNET.
+
+HACÉ LO NECESARIO.
+
+Podés:
+
+usar WebRTC;
+configurar STUN/TURN;
+alojar TURN;
+usar servicio externo;
+usar SDK de voz;
+cambiar la implementación actual si existe una alternativa claramente mejor.
+
+NO reinventes infraestructura innecesariamente.
+
+OBJETIVO:
+
+Jugador A habla por micrófono.
+
+Jugador B escucha.
+
+==================================================
+PROXIMITY VOICE
+==================================================
+
+Implementar/terminar:
+
+CERCA
+→ se escucha.
+
+DISTANCIA MEDIA
+→ menor volumen.
+
+LEJOS
+→ no se escucha.
+
+Rango configurable.
+
+Aproximadamente 10 metros/unidades equivalentes inicialmente.
+
+Considerar:
+
+WORLD
+INTERIOR
+ROOM
+
+para evitar escuchar personas de interiores diferentes accidentalmente.
+
+==================================================
+CANALES
+==================================================
+
+Seguir preparando/implementando:
+
+PROXIMITY.
+
+PARTY.
+
+CONGRESS.
+
+POLICE RADIO.
+
+FIRE RADIO.
+
+MEDICAL RADIO.
+
+PARTY debe permitir comunicación privada entre los 2 miembros del partido cuando corresponda.
+
+==================================================
+PRIORIDAD 3 — POLÍTICA PROFUNDA
+==================================================
+
+Después de estabilizar online/voz, NO TE DETENGAS.
+
+SEGUÍ DESARROLLANDO LA POLÍTICA.
+
+La política es el corazón de ARGENTUM 2D.
+
+Ya existen elecciones/leyes/bancas según tu reporte.
+
+AMPLIALO.
+
+Necesito:
+
+PARTIDOS
+→ CAMPAÑA
+→ PROMESAS
+→ PROPUESTAS
+→ DEBATES
+→ ENCUESTAS
+→ ELECCIÓN
+→ BANCAS
+→ PRESIDENTE
+→ JUEZ
+→ GOBIERNO
+→ OPOSICIÓN
+→ CONGRESO
+→ NEGOCIACIONES
+→ PROYECTOS
+→ ENMIENDAS
+→ VOTACIONES
+→ LEYES
+→ MEDIDAS POLÍTICAS
+→ ECONOMÍA
+→ OPINIÓN PÚBLICA
+→ NUEVA ELECCIÓN.
+
+==================================================
+MEDIDAS DE GOBIERNO
+==================================================
+
+IMPLEMENTAR/AMPLIAR EL POLICY SYSTEM.
+
+El Presidente debe poder impulsar medidas reales.
+
+Categorías:
+
+ECONOMÍA.
+IMPUESTOS.
+PRESUPUESTO.
+SALUD.
+SEGURIDAD.
+JUSTICIA.
+TRABAJO.
+POLÍTICA SOCIAL.
+COMERCIO.
+ARMAS.
+INFRAESTRUCTURA.
+INSTITUCIONAL.
+
+NO:
+
+botón → +10 popularidad.
+
+SÍ:
+
+MEDIDA
+→ PROCEDIMIENTO
+→ COSTO
+→ IMPLEMENTACIÓN
+→ SISTEMA AFECTADO
+→ CONSECUENCIAS
+→ OPINIÓN PÚBLICA.
+
+==================================================
+EJEMPLO OBLIGATORIO
+==================================================
+
+Quiero que esta cadena sea realmente funcional:
+
+Presidente quiere cambiar impuesto al consumo.
+
+→ crea proyecto.
+
+→ propone nueva tasa.
+
+→ Congreso recibe proyecto.
+
+→ oposición puede negociar.
+
+→ proyecto puede recibir enmienda.
+
+→ se vota.
+
+SI RECHAZADO:
+
+impuesto no cambia.
+
+SI APROBADO:
+
+LawSystem registra ley.
+
+TaxSystem cambia tasa.
+
+Supermercado utiliza nueva tasa.
+
+Compras generan nueva recaudación.
+
+BudgetSystem cambia.
+
+EconomicSystem reacciona con el tiempo.
+
+PublicOpinionSystem reacciona.
+
+NewsSystem informa lo ocurrido.
+
+Encuestas pueden cambiar.
+
+TODO COMPARTIDO POR EL SERVIDOR.
+
+==================================================
+CONGRESO
+==================================================
+
+Mantener bancas sistémicas/NPC.
+
+Ejemplo:
+
+100 bancas.
+
+Gobierno:
+38.
+
+Oposición A:
+34.
+
+Oposición B:
+28.
+
+Mayoría:
+51.
+
+EL PRESIDENTE NO TIENE MAYORÍA AUTOMÁTICAMENTE.
+
+Debe negociar.
+
+==================================================
+NEGOCIACIÓN MULTIJUGADOR
+==================================================
+
+ESTO ES FUNDAMENTAL.
+
+Jugador Presidente puede hablar POR VOZ con oposición.
+
+Ejemplo:
+
+"Te acepto bajar la propuesta del 25% al 22% si tu bloque acompaña."
+
+Después modificar proyecto REALMENTE:
+
+25%
+→ 22%.
+
+Y votar esa versión.
+
+No resolver toda negociación con RNG.
+
+==================================================
+PRESUPUESTO
+==================================================
+
+Ampliar BudgetSystem.
+
+Ingresos.
+
+Gastos.
+
+Déficit/superávit.
+
+Deuda cuando corresponda.
+
+Presupuestos:
+
+SALUD.
+POLICÍA.
+JUSTICIA.
+CÁRCEL.
+BOMBEROS.
+INFRAESTRUCTURA.
+ADMINISTRACIÓN.
+PROGRAMAS.
+
+Y QUE AFECTEN SISTEMAS REALES.
+
+==================================================
+ECONOMÍA
+==================================================
+
+Seguir ampliando:
+
+inflación;
+empleo;
+desempleo;
+salarios;
+precios;
+actividad;
+consumo;
+recaudación;
+gasto;
+déficit;
+deuda;
+inversión;
+confianza;
+pobreza/costo de vida de manera simplificada.
+
+NO hacer resultados aleatorios sin explicación.
+
+Las políticas modifican condiciones.
+
+La simulación produce consecuencias.
+
+==================================================
+OPINIÓN PÚBLICA
+==================================================
+
+Implementar/ampliar segmentos.
+
+Por ejemplo:
+
+trabajadores;
+clase media;
+comerciantes;
+jóvenes;
+jubilados;
+empleados públicos;
+sectores de menores ingresos.
+
+Una política puede beneficiar políticamente a un sector y perjudicar apoyo en otro.
+
+==================================================
+PROMESAS ELECTORALES
+==================================================
+
+Registrar promesas durante campaña.
+
+Después comparar:
+
+PROMETIDO
+vs
+REALIZADO.
+
+Distinguir:
+
+promesa cumplida;
+en proceso;
+abandonada;
+rechazada por Congreso;
+bloqueada institucionalmente.
+
+Esto afecta confianza de manera razonable.
+
+==================================================
+JUEZ
+==================================================
+
+El Juez sigue siendo jugador humano.
+
+NO es subordinado del Presidente.
+
+Además de casos criminales:
+
+preparar control constitucional.
+
+Ejemplo:
+
+Congreso aprueba ley.
+
+Existe impugnación.
+
+Caso llega al Tribunal.
+
+Jugador Juez interviene.
+
+Puede decidir según reglas:
+
+CONSTITUCIONAL
+o
+INCONSTITUCIONAL.
+
+NO permitir borrar leyes arbitrariamente sin caso/procedimiento.
+
+==================================================
+OPOSICIÓN
+==================================================
+
+LOS QUE PIERDEN LA ELECCIÓN SIGUEN JUGANDO.
+
+Pueden:
+
+negociar;
+oponerse;
+apoyar proyectos;
+hacer campaña;
+organizar actos;
+participar en debates;
+preparar siguiente elección.
+
+==================================================
+MUNDO FÍSICO
+==================================================
+
+NO abandones el mundo físico mientras desarrollás política.
+
+Seguir mejorando:
+
+movimiento;
+ciudad;
+calles;
+puertas;
+interiores;
+interacciones;
+casas;
+negocios;
+instituciones.
+
+NO convertir ARGENTUM en un dashboard político.
+
+==================================================
+INTERIORES
+==================================================
+
+Todos físicamente jugables:
+
+CONGRESO.
+TRIBUNAL.
+COMISARÍA.
+CÁRCEL.
+HOSPITAL.
+BOMBEROS.
+SUPERMERCADO.
+CASAS+NEGOCIOS.
+
+Jugador:
+
+CAMINA
+→ PUERTA
+→ ENTRA
+→ CAMINA DENTRO
+→ INTERACTÚA
+→ SALE.
+
+Y esto debe funcionar en multiplayer.
+
+==================================================
+FÚTBOL
+==================================================
+
+Tu reporte dice que fútbol está comprobado automáticamente.
+
+SEGUÍ MEJORÁNDOLO.
+
+Quiero Cancha F5 físicamente jugable y MULTIJUGADOR.
+
+Pelota compartida/autoritativa.
+
+Pases.
+
+Remates.
+
+Goles.
+
+Marcador.
+
+Partidos.
+
+Equipos humanos.
+
+Bots para testing.
+
+==================================================
+ARMAS / CRIMEN / JUSTICIA
+==================================================
+
+Tu reporte indica combate y justicia comprobados.
+
+AMPLIALOS SIN ROMPERLOS.
+
+Loop:
+
+ARMA
+→ DISPARO
+→ DAÑO
+→ CRIMEN
+→ POLICÍA
+→ DETENCIÓN
+→ TRIBUNAL
+→ JUEZ HUMANO
+→ SENTENCIA
+→ CÁRCEL/LIBERTAD.
+
+Todo multiplayer.
+
+==================================================
+VIDA DEL JUGADOR
+==================================================
+
+Seguir implementando/ampliando:
+
+dinero;
+inventario;
+5 slots;
+propiedades;
+productos;
+compras;
+ventas;
+hambre;
+sed;
+energía;
+salud;
+trabajos;
+roles.
+
+Capital inicial:
+
+100.000 ARGENTUMS.
+
+==================================================
+20 CASA + NEGOCIO
+==================================================
+
+Mantener como objetivo:
+
+BARRIO NORTE:
+N01-N10.
+
+BARRIO SUR:
+S01-S10.
+
+Cada una:
+
+CASA
++
+NEGOCIO.
+
+Interior físico.
+
+Propiedad.
+
+Stock.
+
+Productos.
+
+Economía.
+
+==================================================
+INSTITUCIONES
+==================================================
+
+Seguir desarrollando:
+
+CONGRESO.
+TRIBUNAL.
+COMISARÍA.
+CÁRCEL.
+HOSPITAL.
+BOMBEROS.
+SUPERMERCADO.
+CANCHA F5.
+PLAZA CENTRAL.
+
+==================================================
+TESTING
+==================================================
+
+SEGUÍ CON LA DISCIPLINA ACTUAL DE PRUEBAS.
+
+IMPLEMENTAR
+→ EJECUTAR
+→ PROBAR
+→ CORREGIR
+→ REGRESIÓN
+→ SEGUIR.
+
+Las 37/37 actuales son BASE.
+
+NO las rompas.
+
+Cuando agregues sistemas:
+
+AMPLIÁ TESTS.
+
+==================================================
+TEST ONLINE REAL
+==================================================
+
+En cuanto servidor público esté disponible:
+
+probar conexión mediante endpoint público.
+
+Después dejar preparado un procedimiento muy simple para que YO pruebe:
+
+PC A
++
+PC B / AMIGO.
+
+Quiero instrucciones exactas.
+
+==================================================
+NO TE DETENGAS DESPUÉS DEL SERVIDOR
+==================================================
+
+MUY IMPORTANTE:
+
+PUBLICAR EL SERVIDOR NO SIGNIFICA TERMINAR LA SESIÓN.
+
+Si conseguís:
+
+SERVIDOR ONLINE
+→ seguí.
+
+Si conseguís:
+
+VOICE
+→ seguí.
+
+Si conseguís:
+
+POLÍTICA
+→ seguí.
+
+Usá el resto del tiempo para continuar el backlog completo.
+
+==================================================
+NO QUIERO MICROREPORTES
+==================================================
+
+NO:
+
+"Configuré WebSocket, ¿querés que siga?"
+
+SEGUÍ.
+
+NO:
+
+"Terminé impuestos, ¿implemento presupuesto?"
+
+SEGUÍ.
+
+NO:
+
+"Ya funciona lobby."
+
+SEGUÍ.
+
+Mientras no exista bloqueo real:
+
+CONTINUÁ.
+
+==================================================
+SI ALGO SE BLOQUEA
+==================================================
+
+Ejemplo:
+
+hosting requiere tarjeta.
+
+NO pases toda la sesión peleando con eso.
+
+Documentá bloqueo.
+
+SeguÍ con:
+
+política;
+economía;
+mundo;
+interiores;
+fútbol;
+combate;
+justicia;
+UI;
+tests.
+
+==================================================
+VERSIÓN JUGABLE SIEMPRE
+==================================================
+
+MANTENER LA REGLA QUE YA INCORPORASTE.
+
+Si empieza a quedar poco uso/créditos:
+
+NO iniciar feature grande.
+
+Cerrar modificación actual.
+
+Ejecutar tests.
+
+Corregir errores críticos.
+
+Mantener build jugable.
+
+Actualizar CONTINUAR_AQUI.md.
+
+Git checkpoint.
+
+Generar ZIP/build recuperable.
+
+==================================================
+ANTES DEL CORTE
+==================================================
+
+OBLIGATORIO DEJAR:
+
+VERSIÓN JUGABLE.
+
+CONTINUAR_AQUI.md ACTUALIZADO.
+
+CHECKPOINT GIT.
+
+Y REPORTE FINAL:
+
+VERSIÓN JUGABLE: SÍ/NO
+
+ÚLTIMO PUNTO FUNCIONAL: ...
+
+MULTIPLAYER ONLINE: ...
+
+SERVIDOR PÚBLICO: ...
+
+CÓMO CONECTARSE: ...
+
+CHAT DE VOZ: ...
+
+POLÍTICA: ...
+
+MEDIDAS DE GOBIERNO: ...
+
+ECONOMÍA: ...
+
+CONGRESO: ...
+
+JUEZ/JUSTICIA: ...
+
+MUNDO FÍSICO: ...
+
+FÚTBOL: ...
+
+QUÉ FALTA: ...
+
+PRÓXIMA ACCIÓN EXACTA: ...
+
+==================================================
+ORDEN FINAL
+==================================================
+
+RETOMÁ EXACTAMENTE ESTE CHECKPOINT.
+
+NO EMPIECES DE CERO.
+
+AHORA:
+
+1. SERVIDOR PÚBLICO / ONLINE REAL.
+2. CONECTIVIDAD POR INTERNET.
+3. VOZ REAL + TURN/ALTERNATIVA.
+4. PROXIMITY VOICE.
+5. POLÍTICA PROFUNDA.
+6. MEDIDAS DE GOBIERNO.
+7. CONGRESO/NEGOCIACIÓN/ENMIENDAS.
+8. ECONOMÍA/PRESUPUESTO/IMPUESTOS.
+9. OPINIÓN PÚBLICA.
+10. JUEZ/CONSTITUCIONALIDAD.
+11. MUNDO FÍSICO/INTERIORES.
+12. ARMAS/CRIMEN/JUSTICIA.
+13. FÚTBOL MULTIJUGADOR.
+14. RESTO DEL JUEGO.
+15. POLISH.
+
+NO ME CONTESTES CON OTRO PLAN.
+
+TRABAJÁ SOBRE EL PROYECTO.
+
+HACÉ LO QUE TENGAS QUE HACER.
+
+PROBÁ TODO.
+
+NO ROMPAS LAS 37/37 PRUEBAS EXISTENTES.
+
+Y SEGUÍ HACIENDO ARGENTUM 2D HASTA QUE REALMENTE TENGAS QUE CERRAR POR CRÉDITOS O POR UN BLOQUEO QUE NECESITE MI INTERVENCIÓN.
