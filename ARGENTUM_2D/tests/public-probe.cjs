@@ -1,0 +1,22 @@
+'use strict';
+const {WebSocket}=require('ws'),fs=require('node:fs'),assert=require('node:assert/strict');
+const base=process.env.ARGENTUM_URL||'https://argentum-2d-production.up.railway.app';
+const identityFile=process.env.PROBE_IDENTITY_FILE||'/tmp/argentum-public-probe.private';
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function until(fn,label){for(let i=0;i<600;i++){const r=fn();if(r)return r;await sleep(25)}throw Error('Timeout: '+label)}
+const opened=[];
+async function connect(hello){const ws=new WebSocket(base.replace(/^http/,'ws')+'/ws',{origin:base,handshakeTimeout:20000}),c={ws,messages:[],state:null,seq:0};opened.push(ws);ws.on('message',d=>{const m=JSON.parse(d);c.messages.push(m);if(m.kind==='joined'){c.identity={room:m.room,actorId:m.actorId,token:m.token};c.state=m.state}if(m.kind==='state')c.state=m.state});await new Promise((ok,no)=>{ws.once('open',ok);ws.once('error',no)});ws.send(JSON.stringify(hello));await until(()=>c.identity||c.messages.find(m=>m.kind==='error'),'join');assert.ok(c.identity,JSON.stringify(c.messages));c.cmd=async(type,args={})=>{const commandId='wan-'+Date.now()+'-'+(++c.seq);ws.send(JSON.stringify({kind:'command',commandId,type,args}));const ack=await until(()=>c.messages.find(m=>m.kind==='ack'&&m.commandId===commandId),'ack '+type);assert.equal(ack.ok,true,JSON.stringify(ack));return ack};return c}
+(async()=>{
+ const health=await fetch(base+'/healthz',{signal:AbortSignal.timeout(25000)});assert.equal(health.status,200);assert.equal((await health.json()).ok,true);
+ if(process.argv.includes('--resume')){const saved=JSON.parse(fs.readFileSync(identityFile));for(const id of saved.identities){const c=await connect({kind:'resume',...id});assert.equal(c.state.session.phase,saved.phase);assert.equal(c.state.politics.parties.length,saved.parties);assert.equal(c.state.accounts[id.actorId],saved.accounts[id.actorId]);}console.log('PASS public persistence: both identities, phase, parties and balances survived server redeployment.');return}
+ const page=await fetch(base+'/',{signal:AbortSignal.timeout(25000)});assert.equal(page.status,200);assert.ok((await page.text()).includes('Gobierno y compromisos'));
+ const a=await connect({kind:'create',name:'Prueba WAN A',testMode:true}),b=await connect({kind:'join',room:a.identity.room,name:'Prueba WAN B'});
+ await a.cmd('LOBBY_CREATE',{name:'Prueba Internet',short:'PI'});await until(()=>a.state.politics.parties.length===1,'party');const party=a.state.politics.parties[0].id;
+ await a.cmd('LOBBY_ASSIGN',{party,slot:'president',player:a.identity.actorId});await b.cmd('LOBBY_ASSIGN',{party,slot:'judge',player:b.identity.actorId});await a.cmd('LOBBY_READY',{party});await b.cmd('LOBBY_READY',{party});await a.cmd('LOBBY_BOTS');await a.cmd('START');await a.cmd('SET_SPEED',{speed:0});await until(()=>b.state.session.phase==='CAMPAIGN','shared start');
+ const id=a.identity.actorId,x=b.state.players[id].x;const timer=setInterval(()=>a.ws.send(JSON.stringify({kind:'input',x:-1,y:0})),45);await sleep(500);clearInterval(timer);a.ws.send(JSON.stringify({kind:'input',x:0,y:0}));await until(()=>b.state.players[id].x<x-25,'mutual movement');
+ assert.deepEqual(a.state.politics.parties,b.state.politics.parties);assert.deepEqual(a.state.policy,b.state.policy);assert.deepEqual(a.state.governance,b.state.governance);
+ const denied='wan-denied';b.ws.send(JSON.stringify({kind:'command',type:'SET_SPEED',args:{speed:4},commandId:denied}));const ack=await until(()=>b.messages.find(m=>m.kind==='ack'&&m.commandId===denied),'authority');assert.equal(ack.ok,false);
+ // Save only our disposable probe identities locally; never emit credentials or commit this file.
+ fs.writeFileSync(identityFile,JSON.stringify({identities:[a.identity,b.identity],phase:a.state.session.phase,parties:a.state.politics.parties.length,accounts:{[a.identity.actorId]:a.state.accounts[a.identity.actorId],[b.identity.actorId]:b.state.accounts[b.identity.actorId]}}),{mode:0o600});
+ console.log('PASS public HTTPS/WSS: client HTML, two clients create/join, individual candidacies/READY, start, shared movement/politics/economy/governance, host authorization.');console.log('Not a two-household human or acoustic voice test. Persistence checkpoint prepared.');
+})().catch(e=>{console.error(e.message);process.exitCode=1}).finally(()=>{for(const ws of opened)ws.close();setTimeout(()=>{for(const ws of opened)ws.terminate()},500).unref()});

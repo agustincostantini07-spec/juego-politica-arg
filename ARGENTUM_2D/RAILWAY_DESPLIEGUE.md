@@ -1,10 +1,14 @@
 # Publicación de ARGENTUM 2D en Railway
 
-Estado comprobado el 15/09/2026: conexión Railway operativa; consulta de proyectos devolvió lista vacía. No hay deployment, dominio ni volumen creados. No se generaron gastos de infraestructura en esta ejecución. Git local sin remoto. La herramienta disponible para desplegar fuentes exige un repositorio GitHub confirmado por el usuario, en formato `propietario/repositorio`, accesible desde su cuenta Railway. No admite subir directamente este ZIP.
+Publicado y verificado el 16/09/2026: https://argentum-2d-production.up.railway.app/ . Dos pestañas de navegador conectadas por WSS a la misma sala, fórmula/READY/inicio/movimiento comprobados. Código en agustincostantini07-spec/juego-politica-arg/ARGENTUM_2D, commit de2c00deba98694e296d067bd885f83922f3af74.
 
-## Desbloqueo necesario
+Servicio 139d0f9d-253f-42cc-80b8-62979ad8688f, proyecto b3dce46a-42f3-4263-b1de-bd327c85554d, production 04825b95-7b5d-42fa-b82c-1098c935a7b6. Deployment SUCCESS 9c4fdcc4-b6a4-422a-8993-2ee45338aa1d.
 
-Conectar GitHub en ChatGPT y confirmar el repositorio de destino. Si todavía no existe, crearlo en GitHub y compartir `propietario/repositorio`; otorgar a Railway acceso a ese repositorio. No pegar tokens en el chat. El proyecto preparado contiene fuentes, Dockerfile, lockfile, tests y build. No subir datos de partidas ni archivos privados de configuración.
+## Bloqueo pendiente
+
+Prueba de reinicio rechazada por revisión automática debido a posible interrupción de usuarios activos. Pedir autorización específica antes de reiniciar o provocar un nuevo deploy. El servicio sigue funcionando. Volumen creado según proveedor, pero su montaje no aparece en consultas: la existencia de /data/rooms NO demuestra persistencia tras redeploy. Detalle exacto y primera acción en CONTINUAR_AQUI.md.
+
+Los pasos siguientes son referencia de configuración, no una orden de volver a crear proyecto/servicio. GitHub y Railway ya están conectados; no reconectarlos.
 
 ## Secuencia del próximo despliegue
 
@@ -23,4 +27,4 @@ Conectar GitHub en ChatGPT y confirmar el repositorio de destino. Si todavía no
 - [Permisos de volúmenes](https://docs.railway.com/volumes#permissions).
 - [Configuración de despliegue](https://docs.railway.com/config-as-code/reference). La página consultada declara obsoleto Config as Code y recomienda Infrastructure as Code; no se agregó un railway.json nuevo. Configurar el servicio con las herramientas disponibles y consultar su esquema vigente al desplegar.
 
-No hay un enlace público de juego en esta entrega. El endpoint local de prueba es http://localhost:3000; no permite conectar desde otra casa por sí solo.
+Enlace público activo: https://argentum-2d-production.up.railway.app/ . Abrirlo en ambos equipos, crear sala y compartir código. La prueba humana entre dos hogares y de voz sigue pendiente.
