@@ -16,6 +16,10 @@ Volumen solicitado y creado según proveedor: 9a4943ed-3412-4dcd-a6d1-dacc340ee1
 El reinicio de prueba del 16/09 fue RECHAZADO por la revisión automática: podría interrumpir usuarios de producción y requiere autorización específica del usuario. NO se ejecutó ni se intentó por otra vía. No publicar cambios de runtime para provocar indirectamente ese reinicio. Cambios documentales/tests excluidos de watchPatterns; conservar servicio activo.
 No se cambió el plan de la cuenta. El proveedor informó plan HOBBY existente y uso incluido de USD 5; uso/egreso adicional facturado aparte. No prometer hosting gratuito.
 
+## Checkpoint documental seguro
+
+La revisión automática también rechazó actualizar main con el cierre documental por tratarse de la rama predeterminada. No se reintentó. Se conserva el cierre en una rama documental separada (docs/public-verification-20260916), sin cambiar la rama que Railway despliega. El código público sigue en de2c00de. No fusionar esa rama ni reiniciar producción sin resolver la autorización correspondiente.
+
 ## PRIMERA ACCIÓN EXACTA
 
 Obtener autorización específica para reiniciar una vez el servidor de producción y comprobar recuperación de la sala de prueba B50B959510. Explicar interrupción breve y rechazo automático anterior. Una vez autorizado: verificar si esa sala y sus dos identidades de navegador siguen disponibles, registrar estado antes, ejecutar redeploy sobre el servicio existente, esperar SUCCESS y comprobar que ambas identidades, partido y fase reaparecen. Si el volumen resulta efímero, resolver montaje con Railway antes de declarar persistencia.
